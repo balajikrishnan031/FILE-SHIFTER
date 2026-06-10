@@ -34,6 +34,7 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-light-bg text-slate-800 selection:bg-primary/20 selection:text-primary">
+        <div className="animate-3d-bg" />
         <AuthProvider>
           {children}
         </AuthProvider>
