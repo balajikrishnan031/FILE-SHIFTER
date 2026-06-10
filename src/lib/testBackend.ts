@@ -59,8 +59,23 @@ async function runTests() {
     console.log("✅ Success! Output file name:", res.fileName);
     console.log("Mime-Type:", res.mimeType);
     console.log("Output buffer size:", res.buffer.length, "bytes");
+
+    // PDF to DOCX test
+    console.log("\nTesting PDF to DOCX...");
+    const docxRes = await convertFile(pdfOutput.buffer, "test.pdf", "pdf", "docx");
+    console.log("✅ Success! Output file name:", docxRes.fileName);
+    console.log("Mime-Type:", docxRes.mimeType);
+    console.log("Output buffer size:", docxRes.buffer.length, "bytes");
+    
+    // PDF to TXT test
+    console.log("\nTesting PDF to TXT...");
+    const txtRes = await convertFile(pdfOutput.buffer, "test.pdf", "pdf", "txt");
+    console.log("✅ Success! Output file name:", txtRes.fileName);
+    console.log("Mime-Type:", txtRes.mimeType);
+    console.log("Output buffer size:", txtRes.buffer.length, "bytes");
+    console.log("Extracted text:", JSON.stringify(txtRes.buffer.toString()));
   } catch (err) {
-    console.error("❌ Failed PDF Compressor:", err);
+    console.error("❌ Failed PDF Converter tests:", err);
   }
 
   console.log("\n=== ALL TESTS FINISHED ===");

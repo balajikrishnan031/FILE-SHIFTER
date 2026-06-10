@@ -15,13 +15,20 @@
 :root {
   --background: #fdfdfd;
   --foreground: #0f172a;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-heading: var(--font-heading), system-ui, sans-serif;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 /* Custom Scrollbar */
@@ -223,5 +230,37 @@ body {
 
 .animate-float-slower {
   animation: float-slower 20s infinite linear;
+}
+
+/* 3D Moving Background Parallax Animation */
+@keyframes bg-zoom-pan {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(1.01);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1.05) translate(8px, -4px);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: scale(1.01);
+  }
+}
+
+.animate-3d-bg {
+  position: relative;
+}
+
+.animate-3d-bg::before {
+  content: '';
+  position: fixed;
+  top: -10px; left: -10px; right: -10px; bottom: -10px;
+  background: linear-gradient(rgba(240, 249, 255, 0.85), rgba(240, 249, 255, 0.94)), url('/bg_3d_render.png');
+  background-size: 110% 110%;
+  background-attachment: fixed;
+  z-index: -10;
+  animation: bg-zoom-pan 45s infinite ease-in-out;
+  pointer-events: none;
 }
 

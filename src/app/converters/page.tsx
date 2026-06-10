@@ -117,7 +117,7 @@ export default function ConvertersCatalogPage() {
   });
 
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col overflow-x-hidden">
+    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col overflow-x-hidden animate-3d-bg">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />

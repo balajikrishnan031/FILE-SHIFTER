@@ -8,6 +8,7 @@ import {
   FileText, Image as ImageIcon, Music, Video, Archive, Shield, Zap, Sparkles,
   ArrowRight, Check, Activity, Users, Flame, RefreshCw, Star, Layers
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const { user, loginWithGoogle, loading } = useAuth();
@@ -26,7 +27,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col justify-between overflow-x-hidden animate-3d-bg">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />
@@ -42,26 +43,48 @@ export default function Home() {
       <main className="flex-1">
         {/* HERO SECTION */}
         <section className="relative mx-auto max-w-7xl px-4 pt-20 pb-16 text-center sm:px-6 lg:px-8 lg:pt-32">
-          <div className="flex justify-center mb-6">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center mb-6"
+          >
             <div className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200/80 bg-white/80 px-4.5 py-1.5 text-xs text-zinc-600 font-bold backdrop-blur-md shadow-md animate-float">
               <Sparkles className="h-3.5 w-3.5 text-primary animate-pulse" />
               <span>Shift Any File &bull; 100% Free & Unlimited</span>
             </div>
-          </div>
+          </motion.div>
           
-          <h1 className="mx-auto max-w-4xl bg-gradient-to-r from-primary via-purple-600 via-rose-500 to-secondary bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl leading-none animate-text-gradient bg-size-300">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mx-auto max-w-4xl bg-gradient-to-r from-primary via-purple-600 via-rose-500 to-secondary bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl leading-none animate-text-gradient bg-size-300"
+          >
             Universal File Shifting Platform
-          </h1>
+          </motion.h1>
           
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-500 sm:text-xl font-semibold leading-relaxed">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mx-auto mt-6 max-w-2xl text-lg text-zinc-500 sm:text-xl font-semibold leading-relaxed"
+          >
             Convert documents, images, audio, video, archives, and e-books instantly. Secure, lightning fast, and completely unlimited. No registration limits, no payment walls.
-          </p>
+          </motion.p>
 
-          <div className="mt-10 flex justify-center gap-4">
-            <button
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-10 flex justify-center gap-4"
+          >
+            <motion.button
+              whileHover={{ scale: 1.04, translateY: -2 }}
+              whileTap={{ scale: 0.98 }}
               onClick={handleCTA}
               disabled={loading}
-              className="group flex items-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-extrabold text-white shadow-xl shadow-primary/25 hover:shadow-primary/45 hover:scale-[1.03] transition-all duration-300 disabled:opacity-50 btn-pulse-glow"
+              className="group flex items-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-extrabold text-white shadow-xl shadow-primary/25 hover:shadow-primary/45 transition-all duration-300 disabled:opacity-50 btn-pulse-glow cursor-pointer"
             >
               {loading ? (
                 <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -71,8 +94,8 @@ export default function Home() {
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </>
               )}
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
 
           {/* Quick Metrics */}
           <div className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-5 sm:grid-cols-4">
@@ -84,13 +107,20 @@ export default function Home() {
             ].map((stat, i) => {
               const Icon = stat.icon;
               return (
-                <div key={i} className="glass-panel rounded-3xl p-5 text-center flex flex-col items-center gap-2 border border-white bg-white/60 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="glass-panel rounded-3xl p-5 text-center flex flex-col items-center gap-2 border border-white bg-white/60 hover:shadow-lg transition-all duration-300"
+                >
                   <div className={`h-9 w-9 rounded-xl ${stat.bg} flex items-center justify-center border border-white/50`}>
                     <Icon className={`h-4.5 w-4.5 ${stat.color}`} />
                   </div>
                   <div className="text-2xl font-extrabold text-slate-800">{stat.value}</div>
                   <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">{stat.label}</div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -111,9 +141,14 @@ export default function Home() {
             {categories.map((cat, i) => {
               const Icon = cat.icon;
               return (
-                <div
+                <motion.div
                   key={i}
-                  className="rainbow-border-card rounded-3xl p-6 flex flex-col gap-4 border border-zinc-200/50"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  whileHover={{ y: -6 }}
+                  className="rainbow-border-card rounded-3xl p-6 flex flex-col gap-4 border border-zinc-200/50 cursor-pointer"
                 >
                   <div className={`h-11 w-11 rounded-xl ${cat.bg} flex items-center justify-center border border-white/50`}>
                     <Icon className={`h-5 w-5 ${cat.color}`} />
@@ -122,9 +157,43 @@ export default function Home() {
                     <h3 className="text-base font-extrabold text-slate-800">{cat.name}</h3>
                     <p className="mt-1.5 text-xs text-zinc-500 font-semibold leading-relaxed">{cat.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
+          </div>
+        </section>
+
+        {/* INTERACTIVE WORKFLOW STEPS */}
+        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 border-t border-zinc-200/50">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-extrabold text-slate-800 sm:text-4xl">
+              How Shifter Works
+            </h2>
+            <p className="mt-4 text-lg text-zinc-500 max-w-2xl mx-auto font-semibold">
+              Three simple steps to shift any file in seconds.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { step: "01", title: "Select a Tool", desc: "Browse our list of 40+ specialized document converters, image transcoders, or custom quality size-reducers." },
+              { step: "02", title: "Upload & Configure", desc: "Drag and drop your file. Set target quality percentages, watermark overlays, or pixel dimension resize properties." },
+              { step: "03", title: "Shift & Download", desc: "Our high-speed backend parses the buffer, executes conversions in isolated clouds, and returns the output download link instantly." }
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="glass-panel rounded-3xl p-6 md:p-8 border border-white bg-white/60 flex flex-col gap-4 shadow-sm"
+              >
+                <div className="text-4xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{item.step}</div>
+                <h3 className="text-lg font-extrabold text-slate-800">{item.title}</h3>
+                <p className="text-sm text-zinc-500 font-semibold leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
@@ -162,7 +231,14 @@ export default function Home() {
                 details: ["ADM-ZIP packing logs", "jsQR canvas image scanners", "Offline QR generators"]
               }
             ].map((engine, idx) => (
-              <div key={idx} className="glass-panel glass-panel-hover rounded-3xl p-6 md:p-8 border border-white bg-white/70 flex flex-col justify-between gap-5 shadow-sm">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="glass-panel glass-panel-hover rounded-3xl p-6 md:p-8 border border-white bg-white/70 flex flex-col justify-between gap-5 shadow-sm"
+              >
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <div className="h-2 w-2 rounded-full bg-primary" />
@@ -177,29 +253,37 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
         {/* SECURITY & FREE GUARANTEE SECTION */}
         <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 border-t border-zinc-200/50">
-          <div className="glass-panel rounded-3xl p-8 md:p-12 border-transparent bg-gradient-to-r from-sky-100/30 via-white/80 to-indigo-50/20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-panel rounded-3xl p-8 md:p-12 border-transparent bg-gradient-to-r from-sky-100/30 via-white/80 to-indigo-50/20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm"
+          >
             <div className="flex flex-col gap-3 max-w-xl">
               <h3 className="text-2xl font-extrabold text-slate-800 flex items-center gap-2">
                 100% Free & Unlimited Access <Zap className="h-5 w-5 text-amber-500 fill-current animate-bounce" />
               </h3>
               <p className="text-sm text-zinc-500 leading-relaxed font-semibold">
-                No billing subscriptions. No daily conversion limits. Convert any file size up to 2 GB with maximum priority speed. Shifter is dedicated to offering unrestricted cloud conversion tools to students, developers, and creators.
+                No daily conversion limits. Convert any file size up to 2 GB with maximum priority speed. Shifter is dedicated to offering unrestricted cloud conversion tools to students, developers, and creators.
               </p>
             </div>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.98 }}
               onClick={handleCTA}
-              className="rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-primary/20 hover:scale-[1.02] hover:shadow-primary/45 transition-all duration-300 btn-pulse-glow"
+              className="rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-primary/20 hover:shadow-primary/45 transition-all duration-300 btn-pulse-glow cursor-pointer"
             >
               Start Converting
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </section>
 
         {/* REVIEWS SECTION */}
@@ -210,7 +294,15 @@ export default function Home() {
               { text: "The clean UI and the light mesh design are beautiful. Choosing the conversion method first is incredibly handy.", author: "Deepika R.", role: "UI Designer", stars: 5 },
               { text: "Batch conversions and the speed is incredible. Image resizing and format suggestions are super handy. Best of all, it's entirely free!", author: "Pranesh S.", role: "SaaS Founder", stars: 5 }
             ].map((rev, i) => (
-              <div key={i} className="glass-panel rounded-3xl p-6 flex flex-col justify-between bg-white/70 border border-white shadow-sm gap-4 border-rainbow-hover">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="glass-panel rounded-3xl p-6 flex flex-col justify-between bg-white/70 border border-white shadow-sm gap-4 border-rainbow-hover"
+              >
                 <p className="text-sm text-zinc-500 font-semibold italic">"{rev.text}"</p>
                 <div className="flex items-center justify-between border-t border-zinc-100 pt-4">
                   <div>
@@ -223,7 +315,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>

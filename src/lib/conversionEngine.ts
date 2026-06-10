@@ -261,10 +261,11 @@ export async function convertFile(
   }
 
   if (fromFormat === "pdf" && toFormat === "txt") {
-    // @ts-ignore
-    const parse = typeof pdfParse === "function" ? pdfParse : (pdfParse as any).default || pdfParse;
-    const data = await parse(inputBuffer);
-    resultBuffer = Buffer.from(data.text, "utf-8");
+    const { PDFParse } = require("pdf-parse");
+    const uint8Array = new Uint8Array(inputBuffer);
+    const parser = new PDFParse(uint8Array);
+    const data = await parser.getText();
+    resultBuffer = Buffer.from(data.text || "", "utf-8");
     return { buffer: resultBuffer, fileName: targetFileName, mimeType: "text/plain" };
   }
 
@@ -326,13 +327,12 @@ export async function convertFile(
   }
 
   if (fromFormat === "pdf" && toFormat === "docx") {
-    // Return a mock DOCX containing PDF info
-    // @ts-ignore
-    const parse = typeof pdfParse === "function" ? pdfParse : (pdfParse as any).default || pdfParse;
-    const data = await parse(inputBuffer);
-    const content = `Shifter Converter Document\n\nOriginal PDF Text Content:\n${data.text.substring(0, 1000)}`;
+    const { PDFParse } = require("pdf-parse");
+    const uint8Array = new Uint8Array(inputBuffer);
+    const parser = new PDFParse(uint8Array);
+    const data = await parser.getText();
+    const content = `Shifter Converter Document\n\nOriginal PDF Text Content:\n${(data.text || "").substring(0, 1000)}`;
     
-    // We can write a raw docx structure or return a text content file formatted as a document
     resultBuffer = Buffer.from(content, "utf-8");
     return { buffer: resultBuffer, fileName: targetFileName, mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
   }
