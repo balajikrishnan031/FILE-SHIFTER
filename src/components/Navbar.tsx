@@ -52,9 +52,9 @@ export const Navbar: React.FC = () => {
                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#0ea5e9" />
-                      <stop offset="50%" stopColor="#6366f1" />
-                      <stop offset="100%" stopColor="#06b6d4" />
+                      <stop offset="0%" stopColor="#3B82F6" />
+                      <stop offset="50%" stopColor="#8B5CF6" />
+                      <stop offset="100%" stopColor="#EC4899" />
                     </linearGradient>
                   </defs>
                   <path 
@@ -87,8 +87,8 @@ export const Navbar: React.FC = () => {
                   />
                 </svg>
               </div>
-              <span className="bg-gradient-to-r from-sky-600 via-indigo-500 to-cyan-500 bg-clip-text text-xl font-extrabold tracking-wider text-transparent group-hover:opacity-95 transition-opacity">
-                SHIFTER
+              <span className="font-logo bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 bg-clip-text text-3xl tracking-wide text-transparent group-hover:opacity-95 transition-opacity pt-1">
+                Shifter
               </span>
             </Link>
           </div>

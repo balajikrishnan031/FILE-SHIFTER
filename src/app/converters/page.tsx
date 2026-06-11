@@ -117,23 +117,23 @@ export default function ConvertersCatalogPage() {
   });
 
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col overflow-x-hidden animate-3d-bg">
+    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col overflow-x-hidden">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />
       <div className="blur-blob blob-rose" />
 
       {/* Decorative Floating Colorful Particles */}
-      <div className="absolute top-[20%] left-[5%] h-72 w-72 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-600 opacity-15 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "25s" }} />
-      <div className="absolute top-[60%] right-[5%] h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-400 to-sky-600 opacity-15 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "35s" }} />
-      <div className="absolute bottom-[10%] left-[25%] h-80 w-80 rounded-full bg-gradient-to-tr from-sky-400 to-teal-600 opacity-10 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "30s" }} />
+      <div className="absolute top-[20%] left-[5%] h-72 w-72 rounded-full bg-gradient-to-tr from-blue-400 to-violet-600 opacity-15 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "25s" }} />
+      <div className="absolute top-[60%] right-[5%] h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 opacity-15 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "35s" }} />
+      <div className="absolute bottom-[10%] left-[25%] h-80 w-80 rounded-full bg-gradient-to-tr from-pink-400 to-violet-600 opacity-10 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "30s" }} />
 
       <Navbar />
 
       <main className="relative z-10 mx-auto max-w-7xl px-4 py-12 md:py-16 flex flex-col gap-8 w-full">
         {/* Centered Hero Header */}
         <div className="text-center max-w-3xl mx-auto flex flex-col gap-3.5 mb-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary via-purple-600 to-secondary bg-clip-text text-transparent animate-text-gradient bg-size-300">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-violet-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent animate-text-gradient bg-size-300">
             Converters Directory
           </h1>
           <p className="text-base text-zinc-500 font-semibold leading-relaxed">

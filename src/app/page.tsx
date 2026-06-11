@@ -19,30 +19,41 @@ export default function Home() {
   };
 
   const categories = [
-    { name: "Documents", desc: "PDF, DOCX, TXT, HTML, PPT, XLSX", icon: FileText, color: "text-purple-600", bg: "bg-purple-500/10", border: "hover:border-purple-500/30" },
+    { name: "Documents", desc: "PDF, DOCX, TXT, HTML, PPT, XLSX", icon: FileText, color: "text-violet-600", bg: "bg-violet-500/10", border: "hover:border-violet-500/30" },
     { name: "Images", desc: "PNG, JPG, WEBP, SVG, GIF, BMP", icon: ImageIcon, color: "text-cyan-600", bg: "bg-cyan-500/10", border: "hover:border-cyan-500/30" },
-    { name: "Audio", desc: "MP3, WAV, AAC, OGG, FLAC, M4A", icon: Music, color: "text-emerald-600", bg: "bg-emerald-500/10", border: "hover:border-emerald-500/30" },
-    { name: "Video", desc: "MP4, AVI, MOV, MKV, WEBM, GIF", icon: Video, color: "text-rose-600", bg: "bg-rose-500/10", border: "hover:border-rose-500/30" },
-    { name: "Archives", desc: "ZIP, TAR, 7Z, RAR, GZIP", icon: Archive, color: "text-amber-600", bg: "bg-amber-500/10", border: "hover:border-amber-500/30" },
+    { name: "Audio", desc: "MP3, WAV, AAC, OGG, FLAC, M4A", icon: Music, color: "text-blue-600", bg: "bg-blue-500/10", border: "hover:border-blue-500/30" },
+    { name: "Video", desc: "MP4, AVI, MOV, MKV, WEBM, GIF", icon: Video, color: "text-pink-600", bg: "bg-pink-500/10", border: "hover:border-pink-500/30" },
+    { name: "Archives", desc: "ZIP, TAR, 7Z, RAR, GZIP", icon: Archive, color: "text-violet-600", bg: "bg-violet-500/10", border: "hover:border-violet-500/30" },
   ];
 
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col justify-between overflow-x-hidden animate-3d-bg">
+    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col justify-between overflow-x-hidden">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />
       <div className="blur-blob blob-rose" />
 
       {/* Decorative Floating Colorful Particles */}
-      <div className="absolute top-[20%] left-[5%] h-72 w-72 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-600 opacity-20 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "25s" }} />
-      <div className="absolute top-[60%] right-[5%] h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-400 to-sky-600 opacity-20 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "35s" }} />
-      <div className="absolute bottom-[10%] left-[25%] h-80 w-80 rounded-full bg-gradient-to-tr from-sky-400 to-teal-600 opacity-15 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "30s" }} />
+      <div className="absolute top-[20%] left-[5%] h-72 w-72 rounded-full bg-gradient-to-tr from-blue-400 to-violet-600 opacity-20 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "25s" }} />
+      <div className="absolute top-[60%] right-[5%] h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 opacity-20 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "35s" }} />
+      <div className="absolute bottom-[10%] left-[25%] h-80 w-80 rounded-full bg-gradient-to-tr from-pink-400 to-violet-600 opacity-15 blur-3xl pointer-events-none animate-float-slower" style={{ animationDuration: "30s" }} />
 
       <Navbar />
 
       <main className="flex-1">
         {/* HERO SECTION */}
         <section className="relative mx-auto max-w-7xl px-4 pt-20 pb-16 text-center sm:px-6 lg:px-8 lg:pt-32">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="mb-3"
+          >
+            <span className="font-accent text-3xl md:text-4xl text-pink-500 drop-shadow-sm select-none">
+              Creative files, shifted instantly
+            </span>
+          </motion.div>
+
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -59,7 +70,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mx-auto max-w-4xl bg-gradient-to-r from-primary via-purple-600 via-rose-500 to-secondary bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl leading-none animate-text-gradient bg-size-300"
+            className="mx-auto max-w-4xl bg-gradient-to-r from-blue-500 via-violet-500 via-pink-500 to-cyan-500 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl leading-none animate-text-gradient bg-size-300"
           >
             Universal File Shifting Platform
           </motion.h1>
@@ -68,7 +79,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mt-6 max-w-2xl text-lg text-zinc-500 sm:text-xl font-semibold leading-relaxed"
+            className="mx-auto mt-6 max-w-2xl text-lg text-slate-700 sm:text-xl font-semibold leading-relaxed"
           >
             Convert documents, images, audio, video, archives, and e-books instantly. Secure, lightning fast, and completely unlimited. No registration limits, no payment walls.
           </motion.p>
@@ -100,10 +111,10 @@ export default function Home() {
           {/* Quick Metrics */}
           <div className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-5 sm:grid-cols-4">
             {[
-              { label: "Files Converted", value: "2.4M+", icon: Activity, color: "text-purple-600", bg: "bg-purple-500/10" },
+              { label: "Files Converted", value: "2.4M+", icon: Activity, color: "text-violet-600", bg: "bg-violet-500/10" },
               { label: "Active Shifters", value: "140K+", icon: Users, color: "text-cyan-600", bg: "bg-cyan-500/10" },
-              { label: "Vibrant Formats", value: "70+", icon: Layers, color: "text-emerald-600", bg: "bg-emerald-500/10" },
-              { label: "Transcode Speed", value: "< 3s", icon: Flame, color: "text-rose-600", bg: "bg-rose-500/10" },
+              { label: "Vibrant Formats", value: "70+", icon: Layers, color: "text-blue-600", bg: "bg-blue-500/10" },
+              { label: "Transcode Speed", value: "< 3s", icon: Flame, color: "text-pink-600", bg: "bg-pink-500/10" },
             ].map((stat, i) => {
               const Icon = stat.icon;
               return (

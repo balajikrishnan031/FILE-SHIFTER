@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0284c7;
-  --color-primary-hover: #0369a1;
-  --color-secondary: #6366f1;
-  --color-secondary-hover: #4f46e5;
+  --color-primary: #3B82F6;
+  --color-primary-hover: #2563EB;
+  --color-secondary: #8B5CF6;
+  --color-secondary-hover: #7C3AED;
   --color-light-bg: transparent;
-  --color-light-card: rgba(255, 255, 255, 0.65);
-  --color-light-border: rgba(255, 255, 255, 0.45);
-  --color-neon-purple: #0ea5e9;
-  --color-neon-cyan: #06b6d4;
+  --color-light-card: rgba(255, 255, 255, 0.7);
+  --color-light-border: rgba(255, 255, 255, 0.5);
+  --color-neon-purple: #8B5CF6;
+  --color-neon-cyan: #06B6D4;
 }
 
 :root {
-  --background: #fdfdfd;
+  --background: transparent;
   --foreground: #0f172a;
   --font-sans: var(--font-body), system-ui, sans-serif;
   --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-logo: var(--font-logo), cursive;
+  --font-accent: var(--font-accent), cursive;
 }
 
 body {
@@ -129,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-text-gradient {
-  background: linear-gradient(to right, #0284c7, #6366f1, #06b6d4, #0ea5e9);
+  background: linear-gradient(to right, #3B82F6, #8B5CF6, #EC4899, #06B6D4);
   background-size: 300% 300%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -139,11 +141,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Color cycling background grid line highlights */
 @keyframes border-rainbow {
-  0% { border-color: #0ea5e9; }
-  25% { border-color: #6366f1; }
-  50% { border-color: #06b6d4; }
-  75% { border-color: #3b82f6; }
-  100% { border-color: #0ea5e9; }
+  0% { border-color: #3B82F6; }
+  25% { border-color: #8B5CF6; }
+  50% { border-color: #EC4899; }
+  75% { border-color: #06B6D4; }
+  100% { border-color: #3B82F6; }
 }
 
 .border-rainbow-hover:hover {
@@ -200,7 +202,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   top: -2px; left: -2px; right: -2px; bottom: -2px;
-  background: linear-gradient(45deg, #0ea5e9, #6366f1, #06b6d4, #3b82f6, #0ea5e9);
+  background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899, #06B6D4, #3B82F6);
   background-size: 400% 400%;
   z-index: -1;
   border-radius: inherit;
@@ -232,28 +234,36 @@ h1, h2, h3, h4, h5, h6 {
   animation: float-slower 20s infinite linear;
 }
 
-/* 3D Moving Background Parallax Animation */
-@keyframes bg-zoom-pan {
+/* 3D Moving Nature Background Parallax Animation */
+@keyframes nature-zoom-pan {
   0% {
     transform: scale(1) translate(0px, 0px);
   }
   50% {
-    transform: scale(1.06) translate(12px, -6px);
+    transform: scale(1.08) translate(15px, -8px);
   }
   100% {
     transform: scale(1) translate(0px, 0px);
   }
 }
 
-.animate-3d-bg {
+.fixed-nature-bg {
   position: fixed;
   top: -20px;
   left: -20px;
   right: -20px;
   bottom: -20px;
-  background: linear-gradient(rgba(240, 249, 255, 0.35), rgba(240, 249, 255, 0.5)), url('/bg_3d_render.png') no-repeat fixed center / cover #f0f9ff;
+  background: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.7)), url('/nature_bg.png') no-repeat fixed center / cover #f0f9ff;
   z-index: -10;
-  animation: bg-zoom-pan 40s infinite ease-in-out;
+  animation: nature-zoom-pan 50s infinite ease-in-out;
   pointer-events: none;
+}
+
+.font-logo {
+  font-family: var(--font-logo), cursive;
+}
+
+.font-accent {
+  font-family: var(--font-accent), cursive;
 }
 

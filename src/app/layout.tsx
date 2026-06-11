@@ -1,18 +1,30 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import { Inter, Sora, Kaushan_Script, Yellowtail } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const outfit = Outfit({
+const sora = Sora({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const kaushanScript = Kaushan_Script({
+  variable: "--font-logo",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const yellowtail = Yellowtail({
+  variable: "--font-accent",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -31,10 +43,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${outfit.variable} h-full antialiased`}
+      className={`${inter.variable} ${sora.variable} ${kaushanScript.variable} ${yellowtail.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-light-bg text-slate-800 selection:bg-primary/20 selection:text-primary">
-        <div className="animate-3d-bg" />
+        <div className="fixed-nature-bg" />
         <AuthProvider>
           {children}
         </AuthProvider>

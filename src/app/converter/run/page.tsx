@@ -73,7 +73,7 @@ function ConverterRunContent() {
   }
 
   return (
-    <div className="min-h-screen bg-light-bg text-slate-800 flex flex-col animate-3d-bg">
+    <div className="min-h-screen bg-light-bg text-slate-800 flex flex-col">
       <Navbar />
 
       <div className="flex flex-1">
