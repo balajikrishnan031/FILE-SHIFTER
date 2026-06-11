@@ -441,7 +441,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
 
             {/* Drop Zone Box */}
             <div
-              className={`relative rounded-3xl border-2 border-dashed p-10 text-center transition-all glass-panel ${
+              className={`relative rounded-3xl border-2 border-dashed p-10 text-center transition-all glass-panel glass-shine ${
                 dragActive 
                   ? "border-primary bg-primary/5 shadow-lg shadow-primary/10" 
                   : "border-zinc-200 bg-white/70 hover:border-primary/30 hover:bg-white"
@@ -493,7 +493,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="config"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel rounded-3xl border-zinc-200/80 bg-white p-6 md:p-8 flex flex-col gap-6 shadow-xl"
+            className="glass-panel glass-shine rounded-3xl border-zinc-200/80 bg-white/80 p-6 md:p-8 flex flex-col gap-6 shadow-xl"
           >
             {/* File Info */}
             <div className="flex items-center justify-between rounded-2xl bg-zinc-50 border border-zinc-200/50 p-4 shadow-inner">
@@ -642,7 +642,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="processing"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel rounded-3xl border-zinc-200/80 bg-white p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
+            className="glass-panel glass-shine rounded-3xl border-zinc-200/80 bg-white/80 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
           >
             <div className="relative flex h-20 w-20 items-center justify-center">
               <div className="absolute inset-0 rounded-full border-4 border-zinc-100 border-t-primary animate-spin" />
@@ -661,7 +661,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             </div>
 
             <div className="w-full max-w-md">
-              <div className="h-2.5 w-full rounded-full bg-zinc-100 overflow-hidden shadow-inner">
+              <div className="h-3 w-full rounded-full bg-zinc-200/50 overflow-hidden shadow-inner liquid-progress border border-white/30">
                 <div 
                   className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
@@ -678,7 +678,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="success"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel rounded-3xl border-zinc-200/80 bg-white p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
+            className="glass-panel glass-shine rounded-3xl border-zinc-200/80 bg-white/80 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 shadow-lg shadow-emerald-500/10">
               <CheckCircle2 className="h-8 w-8 text-emerald-500" />

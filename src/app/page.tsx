@@ -124,7 +124,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   whileHover={{ scale: 1.05 }}
-                  className="glass-panel rounded-3xl p-5 text-center flex flex-col items-center gap-2 border border-white bg-white/60 hover:shadow-lg transition-all duration-300"
+                  className="glass-panel glass-shine rounded-3xl p-5 text-center flex flex-col items-center gap-2 border border-white bg-white/60 hover:shadow-lg transition-all duration-300"
                 >
                   <div className={`h-9 w-9 rounded-xl ${stat.bg} flex items-center justify-center border border-white/50`}>
                     <Icon className={`h-4.5 w-4.5 ${stat.color}`} />
@@ -159,7 +159,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                   whileHover={{ y: -6 }}
-                  className="rainbow-border-card rounded-3xl p-6 flex flex-col gap-4 border border-zinc-200/50 cursor-pointer"
+                  className="rainbow-border-card glass-shine rounded-3xl p-6 flex flex-col gap-4 border border-zinc-200/50 cursor-pointer"
                 >
                   <div className={`h-11 w-11 rounded-xl ${cat.bg} flex items-center justify-center border border-white/50`}>
                     <Icon className={`h-5 w-5 ${cat.color}`} />
@@ -198,7 +198,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                className="glass-panel rounded-3xl p-6 md:p-8 border border-white bg-white/60 flex flex-col gap-4 shadow-sm"
+                className="glass-panel glass-shine rounded-3xl p-6 md:p-8 border border-white bg-white/60 flex flex-col gap-4 shadow-sm"
               >
                 <div className="text-4xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{item.step}</div>
                 <h3 className="text-lg font-extrabold text-slate-800">{item.title}</h3>
@@ -248,7 +248,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="glass-panel glass-panel-hover rounded-3xl p-6 md:p-8 border border-white bg-white/70 flex flex-col justify-between gap-5 shadow-sm"
+                 className="glass-panel glass-panel-hover glass-shine rounded-3xl p-6 md:p-8 border border-white bg-white/70 flex flex-col justify-between gap-5 shadow-sm"
               >
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-2">
@@ -276,7 +276,7 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-panel rounded-3xl p-8 md:p-12 border-transparent bg-gradient-to-r from-sky-100/30 via-white/80 to-indigo-50/20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm"
+            className="glass-panel glass-shine rounded-3xl p-8 md:p-12 border-transparent bg-gradient-to-r from-sky-100/30 via-white/80 to-indigo-50/20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm"
           >
             <div className="flex flex-col gap-3 max-w-xl">
               <h3 className="text-2xl font-extrabold text-slate-800 flex items-center gap-2">
@@ -312,7 +312,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="glass-panel rounded-3xl p-6 flex flex-col justify-between bg-white/70 border border-white shadow-sm gap-4 border-rainbow-hover"
+                className="glass-panel glass-shine rounded-3xl p-6 flex flex-col justify-between bg-white/70 border border-white shadow-sm gap-4 border-rainbow-hover"
               >
                 <p className="text-sm text-zinc-500 font-semibold italic">"{rev.text}"</p>
                 <div className="flex items-center justify-between border-t border-zinc-100 pt-4">

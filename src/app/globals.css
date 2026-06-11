@@ -267,3 +267,54 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-accent), cursive;
 }
 
+/* Glass Shine Micro-Interaction */
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  transform: rotate(45deg) translate(-100%, -100%);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-shine:hover::after {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* Liquid Progress Bar wave effect */
+.liquid-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: wave 2.2s infinite linear;
+}
+
+@keyframes wave {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+

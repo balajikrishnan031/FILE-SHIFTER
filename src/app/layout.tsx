@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Sora, Kaushan_Script, Yellowtail } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
+import { AuroraBackground } from "@/components/AuroraBackground";
 
 const inter = Inter({
   variable: "--font-body",
@@ -47,6 +48,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-light-bg text-slate-800 selection:bg-primary/20 selection:text-primary">
         <div className="fixed-nature-bg" />
+        <AuroraBackground />
         <AuthProvider>
           {children}
         </AuthProvider>
