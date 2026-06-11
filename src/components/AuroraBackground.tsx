@@ -32,8 +32,8 @@ export const AuroraBackground: React.FC = () => {
         float noise = sin(uv.x * 10.0 + u_time * 0.5) * cos(uv.y * 8.0 - u_time * 0.3);
         float glow = smoothstep(0.4, 0.6, abs(sin(uv.y * 3.0 + u_time * 0.2 + noise * 0.5)));
         
-        vec3 color1 = vec3(0.23, 0.51, 0.96); // #3B82F6 Blue
-        vec3 color2 = vec3(0.55, 0.36, 0.96); // #8B5CF6 Purple
+        vec3 color1 = vec3(0.96, 0.62, 0.04); // #F59E0B Gold
+        vec3 color2 = vec3(0.39, 0.24, 0.82); // #6366F1 Purple/Indigo
         
         vec3 finalColor = mix(color1, color2, uv.x + noise * 0.2);
         float alpha = glow * 0.15;

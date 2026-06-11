@@ -27,7 +27,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-light-bg text-slate-200 flex flex-col justify-between overflow-x-hidden">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />
@@ -129,7 +129,7 @@ export default function Home() {
                   <div className={`h-9 w-9 rounded-xl ${stat.bg} flex items-center justify-center border border-white/50`}>
                     <Icon className={`h-4.5 w-4.5 ${stat.color}`} />
                   </div>
-                  <div className="text-2xl font-extrabold text-slate-800">{stat.value}</div>
+                  <div className="text-2xl font-extrabold text-slate-200">{stat.value}</div>
                   <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">{stat.label}</div>
                 </motion.div>
               );
@@ -140,10 +140,10 @@ export default function Home() {
         {/* FEATURES GRID SECTION */}
         <section id="features" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 border-t border-zinc-200/50">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold text-slate-800 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold text-slate-200 sm:text-4xl">
               Power Packed Converters
             </h2>
-            <p className="mt-4 text-lg text-zinc-500 max-w-2xl mx-auto font-semibold">
+            <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto font-semibold">
               Seamlessly shift any file format. Enjoy high-fidelity layouts retention with our conversion modules.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function Home() {
                     <Icon className={`h-5 w-5 ${cat.color}`} />
                   </div>
                   <div>
-                    <h3 className="text-base font-extrabold text-slate-800">{cat.name}</h3>
+                    <h3 className="text-base font-extrabold text-slate-200">{cat.name}</h3>
                     <p className="mt-1.5 text-xs text-zinc-500 font-semibold leading-relaxed">{cat.desc}</p>
                   </div>
                 </motion.div>
@@ -177,10 +177,10 @@ export default function Home() {
         {/* INTERACTIVE WORKFLOW STEPS */}
         <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 border-t border-zinc-200/50">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold text-slate-800 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold text-slate-200 sm:text-4xl">
               How Shifter Works
             </h2>
-            <p className="mt-4 text-lg text-zinc-500 max-w-2xl mx-auto font-semibold">
+            <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto font-semibold">
               Three simple steps to shift any file in seconds.
             </p>
           </div>
@@ -201,7 +201,7 @@ export default function Home() {
                 className="glass-panel glass-shine rounded-3xl p-6 md:p-8 border border-white bg-white/60 flex flex-col gap-4 shadow-sm"
               >
                 <div className="text-4xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{item.step}</div>
-                <h3 className="text-lg font-extrabold text-slate-800">{item.title}</h3>
+                <h3 className="text-lg font-extrabold text-slate-200">{item.title}</h3>
                 <p className="text-sm text-zinc-500 font-semibold leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
@@ -211,10 +211,10 @@ export default function Home() {
         {/* ENGINE DETAILS SECTION */}
         <section id="how-it-works" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 border-t border-zinc-200/50">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold text-slate-800 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold text-slate-200 sm:text-4xl">
               Our Conversion Architecture
             </h2>
-            <p className="mt-4 text-lg text-zinc-500 max-w-2xl mx-auto font-semibold">
+            <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto font-semibold">
               Shifter orchestrates professional, industry-standard conversion tools in the cloud to guarantee zero layout distortions.
             </p>
           </div>
@@ -253,7 +253,7 @@ export default function Home() {
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <div className="h-2 w-2 rounded-full bg-primary" />
-                    <h3 className="text-lg font-extrabold text-slate-800">{engine.title}</h3>
+                    <h3 className="text-lg font-extrabold text-slate-200">{engine.title}</h3>
                   </div>
                   <p className="text-sm text-zinc-500 leading-relaxed font-semibold">{engine.desc}</p>
                 </div>

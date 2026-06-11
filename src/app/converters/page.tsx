@@ -117,7 +117,7 @@ export default function ConvertersCatalogPage() {
   });
 
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col overflow-x-hidden">
+    <div className="relative min-h-screen bg-light-bg text-slate-200 flex flex-col overflow-x-hidden">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />
@@ -133,10 +133,10 @@ export default function ConvertersCatalogPage() {
       <main className="relative z-10 mx-auto max-w-7xl px-4 py-12 md:py-16 flex flex-col gap-8 w-full">
         {/* Centered Hero Header */}
         <div className="text-center max-w-3xl mx-auto flex flex-col gap-3.5 mb-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-violet-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent animate-text-gradient bg-size-300">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary via-secondary via-pink-500 to-cyan-500 bg-clip-text text-transparent animate-text-gradient bg-size-300">
             Converters Directory
           </h1>
-          <p className="text-base text-zinc-500 font-semibold leading-relaxed">
+          <p className="text-base text-slate-400 font-semibold leading-relaxed">
             Explore our full catalog of 40+ high-fidelity shifting tools. Select docx, pdf, mp4, mp3, zip, archives or custom resizer engines to execute conversions instantly.
           </p>
         </div>
@@ -144,13 +144,13 @@ export default function ConvertersCatalogPage() {
         {/* Search Box & Filters */}
         <div className="flex flex-col gap-4 max-w-3xl mx-auto w-full">
           <div className="relative">
-            <Search className="absolute left-4 top-3.5 h-4.5 w-4.5 text-zinc-400" />
+            <Search className="absolute left-4 top-3.5 h-4.5 w-4.5 text-slate-400" />
             <input
               type="text"
               placeholder="Search tools directory..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-2xl border border-zinc-200 bg-white py-3.5 pl-12 pr-4 text-sm text-zinc-700 placeholder-zinc-400 focus:border-primary focus:outline-none shadow-sm"
+              className="w-full rounded-2xl border border-white/10 bg-slate-950/60 py-3.5 pl-12 pr-4 text-sm text-slate-200 placeholder-slate-500 focus:border-primary focus:outline-none shadow-sm backdrop-blur-md"
             />
           </div>
 
@@ -159,10 +159,10 @@ export default function ConvertersCatalogPage() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`rounded-full px-4.5 py-2 text-xs font-bold transition-all shadow-sm ${
+                className={`rounded-full px-4.5 py-2 text-xs font-bold transition-all shadow-sm cursor-pointer ${
                   activeCategory === cat.id
-                    ? "bg-primary text-white"
-                    : "bg-white border border-zinc-200 text-zinc-600 hover:bg-zinc-50"
+                    ? "bg-primary text-slate-950 shadow-md shadow-primary/20"
+                    : "bg-slate-900/60 border border-white/10 text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
                 }`}
               >
                 {cat.name}
@@ -179,21 +179,21 @@ export default function ConvertersCatalogPage() {
               <button
                 key={idx}
                 onClick={() => handleToolClick(t)}
-                className="rainbow-border-card rounded-3xl p-6 border border-zinc-200/50 flex flex-col justify-between text-left shadow-sm gap-5 active:scale-[0.98] group cursor-pointer w-full"
+                className="rainbow-border-card rounded-3xl p-6 border border-white/10 flex flex-col justify-between text-left shadow-sm gap-5 active:scale-[0.98] group cursor-pointer w-full"
               >
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
-                    <div className={`h-8 w-8 rounded-lg ${t.bg} flex items-center justify-center border border-white`}>
+                    <div className={`h-8 w-8 rounded-lg ${t.bg} flex items-center justify-center border border-white/10`}>
                       <Icon className={`h-4.5 w-4.5 ${t.color}`} />
                     </div>
-                    <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider rounded-md bg-zinc-100 px-2 py-0.5 border border-zinc-200/50">
+                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider rounded-md bg-slate-900/60 px-2 py-0.5 border border-white/10">
                       {t.category}
                     </span>
                   </div>
-                  <h4 className="text-base font-extrabold text-slate-800 group-hover:text-primary transition-colors">
+                  <h4 className="text-base font-extrabold text-slate-200 group-hover:text-primary transition-colors">
                     {t.name}
                   </h4>
-                  <p className="text-xs text-zinc-400 font-semibold leading-relaxed">
+                  <p className="text-xs text-slate-400 font-semibold leading-relaxed">
                     {t.desc}
                   </p>
                 </div>

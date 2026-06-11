@@ -354,11 +354,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       {/* Mode Toggle Tabs */}
       {status === "idle" && !file && !tool && (
         <div className="flex justify-center">
-          <div className="flex rounded-full border border-zinc-200 bg-white/70 p-1 shadow-sm">
+          <div className="flex rounded-full border border-white/10 bg-slate-950/60 p-1 shadow-sm backdrop-blur-md">
             <button
               onClick={() => { setActiveMode("format-first"); resetForm(); }}
               className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
-                activeMode === "format-first" ? "bg-primary text-white shadow-sm" : "text-zinc-600 hover:text-zinc-900"
+                activeMode === "format-first" ? "bg-primary text-slate-950 shadow-sm" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <Layers className="h-3.5 w-3.5" /> Choose Method First
@@ -366,7 +366,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             <button
               onClick={() => { setActiveMode("file-first"); resetForm(); }}
               className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
-                activeMode === "file-first" ? "bg-primary text-white shadow-sm" : "text-zinc-600 hover:text-zinc-900"
+                activeMode === "file-first" ? "bg-primary text-slate-950 shadow-sm" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <FileUp className="h-3.5 w-3.5" /> Upload File First
@@ -387,33 +387,33 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           >
             {/* Format Dropdowns (Format First Mode & No special tool loaded) */}
             {activeMode === "format-first" && !tool && (
-              <div className="glass-panel rounded-3xl p-5 border-zinc-200/80 flex flex-col sm:flex-row items-center gap-4 shadow-sm bg-white/80">
+              <div className="glass-panel rounded-3xl p-5 border-white/10 flex flex-col sm:flex-row items-center gap-4 shadow-sm bg-slate-950/60">
                 <div className="flex-1 w-full flex flex-col gap-1.5">
-                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Convert From</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Convert From</span>
                   <select
                     value={selectedFrom}
                     onChange={handleFromChange}
-                    className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full rounded-xl border border-white/10 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-200 focus:outline-none focus:ring-1 focus:ring-primary"
                   >
                     {ALL_FROM_FORMATS.map((format) => (
-                      <option key={format} value={format}>
+                      <option key={format} value={format} className="bg-slate-950 text-slate-200">
                         {format.toUpperCase()}
                       </option>
                     ))}
                   </select>
                 </div>
                 
-                <div className="shrink-0 text-zinc-400 font-bold text-sm hidden sm:block pt-4">&rarr;</div>
+                <div className="shrink-0 text-slate-400 font-bold text-sm hidden sm:block pt-4">&rarr;</div>
 
                 <div className="flex-1 w-full flex flex-col gap-1.5">
-                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Convert To</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Convert To</span>
                   <select
                     value={selectedTo}
                     onChange={(e) => setSelectedTo(e.target.value)}
-                    className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full rounded-xl border border-white/10 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-200 focus:outline-none focus:ring-1 focus:ring-primary"
                   >
                     {formatFirstTargets.map((format) => (
-                      <option key={format} value={format}>
+                      <option key={format} value={format} className="bg-slate-950 text-slate-200">
                         {format.toUpperCase()}
                       </option>
                     ))}
@@ -424,14 +424,14 @@ export const FileUpload: React.FC<FileUploadProps> = ({
 
             {/* Special tool label header (If tool parameter loaded) */}
             {tool && (
-              <div className="glass-panel rounded-3xl p-4 border-zinc-200 bg-gradient-to-r from-primary/10 to-secondary/5 flex items-center justify-between shadow-sm">
+              <div className="glass-panel rounded-3xl p-4 border-white/10 bg-gradient-to-r from-primary/15 to-secondary/10 flex items-center justify-between shadow-sm">
                 <span className="text-xs font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="h-4 w-4 text-primary animate-pulse" /> Selected Tool: {tool.toUpperCase()} UTILITY
                 </span>
                 {onClose && (
                   <button
                     onClick={onClose}
-                    className="h-6 w-6 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-zinc-600 transition-colors shadow-sm"
+                    className="h-6 w-6 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors shadow-sm"
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
@@ -444,7 +444,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
               className={`relative rounded-3xl border-2 border-dashed p-10 text-center transition-all glass-panel glass-shine ${
                 dragActive 
                   ? "border-primary bg-primary/5 shadow-lg shadow-primary/10" 
-                  : "border-zinc-200 bg-white/70 hover:border-primary/30 hover:bg-white"
+                  : "border-white/10 bg-slate-950/60 hover:border-primary/30 hover:bg-slate-950/80"
               }`}
               onDragEnter={handleDrag}
               onDragOver={handleDrag}
@@ -459,26 +459,26 @@ export const FileUpload: React.FC<FileUploadProps> = ({
               />
               
               <div className="flex flex-col items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary/15 to-secondary/10 p-1 border border-zinc-200 shadow-sm">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary/15 to-secondary/10 p-1 border border-white/10 shadow-sm">
                   <Upload className="h-7 w-7 text-primary animate-bounce" />
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-extrabold text-zinc-800">
+                  <h3 className="text-lg font-extrabold text-slate-200">
                     {tool 
                       ? `Upload file for ${tool.toUpperCase()} processing`
                       : activeMode === "format-first" 
                       ? `Upload .${selectedFrom.toUpperCase()} file to convert`
                       : "Drag & Drop file to shift"}
                   </h3>
-                  <p className="mt-1 text-sm text-zinc-500 font-semibold">
+                  <p className="mt-1 text-sm text-slate-400 font-semibold">
                     or click to browse from device (100% Free & Unlimited)
                   </p>
                 </div>
                 
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="mt-2 rounded-xl bg-zinc-950 hover:bg-zinc-800 border border-transparent px-5 py-2.5 text-sm font-bold text-white transition-all shadow-md active:scale-95"
+                  className="mt-2 rounded-xl bg-primary hover:bg-primary-hover text-slate-950 border border-transparent px-5 py-2.5 text-sm font-bold transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   Browse Files
                 </button>
@@ -493,22 +493,22 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="config"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel glass-shine rounded-3xl border-zinc-200/80 bg-white/80 p-6 md:p-8 flex flex-col gap-6 shadow-xl"
+            className="glass-panel glass-shine rounded-3xl border-white/10 bg-slate-950/60 p-6 md:p-8 flex flex-col gap-6 shadow-xl"
           >
             {/* File Info */}
-            <div className="flex items-center justify-between rounded-2xl bg-zinc-50 border border-zinc-200/50 p-4 shadow-inner">
+            <div className="flex items-center justify-between rounded-2xl bg-slate-900/60 border border-white/10 p-4 shadow-inner">
               <div className="flex items-center gap-3">
-                <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                <div className="h-11 w-11 rounded-xl bg-primary/15 flex items-center justify-center border border-primary/20">
                   <FileIcon className="h-5 w-5 text-primary" />
                 </div>
                 <div className="max-w-[280px] md:max-w-md truncate">
-                  <p className="text-sm font-bold text-zinc-800 truncate">{file.name}</p>
-                  <p className="text-xs text-zinc-500 font-mono mt-0.5">{formatSize(file.size)}</p>
+                  <p className="text-sm font-bold text-slate-200 truncate">{file.name}</p>
+                  <p className="text-xs text-slate-400 font-mono mt-0.5">{formatSize(file.size)}</p>
                 </div>
               </div>
               <button 
                 onClick={resetForm}
-                className="text-xs text-zinc-400 hover:text-rose-500 font-bold transition-colors"
+                className="text-xs text-slate-400 hover:text-rose-400 font-bold transition-colors cursor-pointer"
               >
                 Change File
               </button>
@@ -517,7 +517,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             {/* Target Select Option (Only shown in File-First Mode & No special tool loaded) */}
             {activeMode === "file-first" && !tool && (
               <div className="flex flex-col gap-3">
-                <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="h-4 w-4 text-primary" /> Shift Output Target
                 </span>
                 
@@ -527,10 +527,10 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                       <button
                         key={format}
                         onClick={() => setTargetFormat(format)}
-                        className={`rounded-xl py-2.5 text-xs font-bold uppercase tracking-wider border transition-all ${
+                        className={`rounded-xl py-2.5 text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                           targetFormat === format
-                            ? "bg-gradient-to-r from-primary to-secondary text-white border-transparent shadow-lg shadow-primary/20 scale-[1.02]"
-                            : "bg-zinc-50 border-zinc-200 text-zinc-500 hover:border-zinc-300 hover:text-zinc-800"
+                            ? "bg-gradient-to-r from-primary to-secondary text-slate-950 border-transparent shadow-lg shadow-primary/20 scale-[1.02]"
+                            : "bg-slate-900/40 border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200"
                         }`}
                       >
                         {format}
@@ -538,11 +538,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                     ))}
                   </div>
                 ) : (
-                  <div className="rounded-2xl border border-rose-200 bg-rose-50/5 p-4 flex items-start gap-3">
-                    <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
+                  <div className="rounded-2xl border border-rose-500/20 bg-rose-950/10 p-4 flex items-start gap-3">
+                    <AlertTriangle className="h-5 w-5 text-rose-400 shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="text-sm font-bold text-rose-800">Unsupported file format</h4>
-                      <p className="text-xs text-rose-500/80 mt-1">
+                      <h4 className="text-sm font-bold text-rose-300">Unsupported file format</h4>
+                      <p className="text-xs text-rose-400/80 mt-1">
                         We currently do not support conversions for <strong>.{fileExt}</strong> files.
                       </p>
                     </div>
@@ -555,41 +555,41 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             
             {/* 1. Watermarker Settings */}
             {tool === "watermark" && (
-              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 flex flex-col gap-3 shadow-inner">
-                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider flex items-center gap-1"><Type className="h-3.5 w-3.5" /> Watermark Overlay Config</span>
+              <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4 flex flex-col gap-3 shadow-inner">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1"><Type className="h-3.5 w-3.5" /> Watermark Overlay Config</span>
                 <input
                   type="text"
                   placeholder="Enter watermark text (e.g. CONFIDENTIAL)..."
                   value={watermarkText}
                   onChange={(e) => setWatermarkText(e.target.value)}
-                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:outline-none"
+                  className="w-full rounded-xl border border-white/10 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-200 focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
             )}
 
             {/* 2. Image Resizer Settings */}
             {tool === "resize" && (
-              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 flex flex-col gap-4 shadow-inner">
-                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Image Dimensions (Pixels)</span>
+              <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4 flex flex-col gap-4 shadow-inner">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Image Dimensions (Pixels)</span>
                 <div className="flex gap-3">
                   <div className="flex-1 flex flex-col gap-1">
-                    <span className="text-[10px] text-zinc-400 font-bold">Width</span>
+                    <span className="text-[10px] text-slate-400 font-bold">Width</span>
                     <input
                       type="number"
                       value={width}
                       onChange={(e) => setWidth(e.target.value)}
                       placeholder="Width (px)"
-                      className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs font-semibold text-zinc-700"
+                      className="w-full rounded-xl border border-white/10 bg-slate-900/80 px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
                   <div className="flex-1 flex flex-col gap-1">
-                    <span className="text-[10px] text-zinc-400 font-bold">Height</span>
+                    <span className="text-[10px] text-slate-400 font-bold">Height</span>
                     <input
                       type="number"
                       value={height}
                       onChange={(e) => setHeight(e.target.value)}
                       placeholder="Height (px)"
-                      className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs font-semibold text-zinc-700"
+                      className="w-full rounded-xl border border-white/10 bg-slate-900/80 px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
                 </div>
@@ -599,15 +599,15 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             {/* 3. Image Compression Quality slider */}
             {((["jpg", "jpeg", "png", "webp"].includes(targetFormat) && !tool) || 
               ["compress", "photocompress", "videocompress", "audiocompress", "pdfcompress"].includes(tool)) && (
-              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 flex flex-col gap-2 shadow-inner">
-                <div className="flex items-center justify-between text-xs text-zinc-500 font-semibold">
+              <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4 flex flex-col gap-2 shadow-inner">
+                <div className="flex items-center justify-between text-xs text-slate-400 font-semibold">
                   <span className="flex items-center gap-1.5">
                     <Settings className="h-3.5 w-3.5" /> 
                     {tool === "videocompress" || tool === "audiocompress" || tool === "pdfcompress"
                       ? "Target Compression Strength"
                       : "Quality Compression Parameters"}
                   </span>
-                  <span className="font-mono text-zinc-800">
+                  <span className="font-mono text-slate-200">
                     {tool === "videocompress" || tool === "audiocompress" || tool === "pdfcompress"
                       ? `${120 - quality}% Strength`
                       : `${quality}%`}
@@ -619,7 +619,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                   max="100"
                   value={quality}
                   onChange={(e) => setQuality(parseInt(e.target.value))}
-                  className="w-full accent-primary bg-zinc-200 h-1 rounded-lg cursor-pointer"
+                  className="w-full accent-primary bg-slate-700 h-1 rounded-lg cursor-pointer"
                 />
               </div>
             )}
@@ -628,7 +628,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             <button
               onClick={startConversion}
               disabled={(!targetFormat && !tool) || !user}
-              className="w-full rounded-2xl bg-gradient-to-r from-primary via-indigo-600 to-secondary py-3.5 text-sm font-bold text-white shadow-xl shadow-primary/20 hover:scale-[1.01] hover:shadow-primary/35 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:pointer-events-none"
+              className="w-full rounded-2xl bg-gradient-to-r from-primary to-secondary py-3.5 text-sm font-bold text-slate-950 shadow-xl shadow-primary/20 hover:scale-[1.01] hover:shadow-primary/35 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
             >
               <span>Convert File Now</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -642,32 +642,32 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="processing"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel glass-shine rounded-3xl border-zinc-200/80 bg-white/80 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
+            className="glass-panel glass-shine rounded-3xl border-white/10 bg-slate-950/60 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
           >
             <div className="relative flex h-20 w-20 items-center justify-center">
-              <div className="absolute inset-0 rounded-full border-4 border-zinc-100 border-t-primary animate-spin" />
+              <div className="absolute inset-0 rounded-full border-4 border-slate-800 border-t-primary animate-spin" />
               <div className="h-10 w-10 text-primary animate-pulse flex items-center justify-center">
-                <RefreshCw className="h-6 w-6 animate-spin" style={{ animationDuration: "3s" }} />
+                <RefreshCw className="h-6 w-6 animate-spin animate-duration-3000" />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-extrabold text-zinc-800">
+              <h3 className="text-lg font-extrabold text-slate-200">
                 Shifting layouts...
               </h3>
-              <p className="text-sm text-zinc-500 font-semibold">
+              <p className="text-sm text-slate-400 font-semibold">
                 {stepMessage}
               </p>
             </div>
 
             <div className="w-full max-w-md">
-              <div className="h-3 w-full rounded-full bg-zinc-200/50 overflow-hidden shadow-inner liquid-progress border border-white/30">
+              <div className="h-3 w-full rounded-full bg-slate-800/50 overflow-hidden shadow-inner liquid-progress border border-white/10">
                 <div 
                   className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <span className="text-xs text-zinc-400 font-mono mt-2 block">{progress}% Complete</span>
+              <span className="text-xs text-slate-400 font-mono mt-2 block">{progress}% Complete</span>
             </div>
           </motion.div>
         )}
@@ -678,17 +678,17 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="success"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel glass-shine rounded-3xl border-zinc-200/80 bg-white/80 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
+            className="glass-panel glass-shine rounded-3xl border-white/10 bg-slate-950/60 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 shadow-lg shadow-emerald-500/10">
-              <CheckCircle2 className="h-8 w-8 text-emerald-500" />
+              <CheckCircle2 className="h-8 w-8 text-emerald-400" />
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-extrabold text-emerald-600">
+              <h3 className="text-lg font-extrabold text-emerald-400">
                 Conversion Complete!
               </h3>
-              <p className="text-sm text-zinc-500 max-w-sm mx-auto truncate font-medium">
+              <p className="text-sm text-slate-400 max-w-sm mx-auto truncate font-medium">
                 {convertedFileName}
               </p>
             </div>
@@ -703,7 +703,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
               </a>
               <button
                 onClick={resetForm}
-                className="flex-1 rounded-2xl border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-600 font-bold py-3.5 text-sm transition-all"
+                className="flex-1 rounded-2xl border border-white/10 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold py-3.5 text-sm transition-all cursor-pointer"
               >
                 Shift Another
               </button>
@@ -717,24 +717,24 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             key="error"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel rounded-3xl border-rose-200 bg-rose-50/50 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
+            className="glass-panel rounded-3xl border-rose-500/20 bg-rose-950/25 p-8 text-center flex flex-col items-center justify-center gap-6 shadow-xl"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-500/10 border border-rose-500/20 shadow-lg">
               <AlertTriangle className="h-8 w-8 text-rose-500" />
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-extrabold text-rose-600">
+              <h3 className="text-lg font-extrabold text-rose-400">
                 Conversion Failed
               </h3>
-              <p className="text-sm text-rose-700/80 max-w-sm mx-auto font-medium">
+              <p className="text-sm text-rose-200/80 max-w-sm mx-auto font-medium">
                 {errorMsg}
               </p>
             </div>
 
             <button
               onClick={resetForm}
-              className="w-full max-w-md rounded-2xl bg-zinc-950 hover:bg-zinc-800 border border-transparent py-3.5 text-sm font-bold text-white transition-all active:scale-[0.99]"
+              className="w-full max-w-md rounded-2xl bg-rose-900 hover:bg-rose-800 border border-transparent py-3.5 text-sm font-bold text-white transition-all active:scale-[0.99] cursor-pointer"
             >
               Try Again
             </button>

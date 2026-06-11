@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shifter | Universal File Shifting Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Sora:wght@600;700&amp;family=Yellowtail&amp;family=Kaushan+Script&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes nature-zoom-pan {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(-1%, -1%); }
+            100% { transform: scale(1) translate(0, 0); }
+        }
+
+        .animate-nature-bg {
+            animation: nature-zoom-pan 30s ease-in-out infinite;
+        }
+
+        .glass-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg) translate(-100%, -100%);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .glass-shine:hover::after {
+            transform: rotate(45deg) translate(100%, 100%);
+        }
+
+        .liquid-progress {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: wave 2s infinite linear;
+        }
+
+        @keyframes wave {
+            from { left: -100%; }
+            to { left: 100%; }
+        }
+
+        .text-gradient-cycle {
+            background: linear-gradient(to right, #0058be, #6b38d4, #b10e6b, #0058be);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradient-flow 8s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            to { background-position: 300% center; }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glow-primary {
+            box-shadow: 0 10px 30px rgba(107, 56, 212, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#3e0022",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#ffd9e4",
+                        "tertiary-container": "#d23284",
+                        "on-background": "#191c1e",
+                        "tertiary": "#b10e6b",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#8455ef",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#ffb0cd",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-fixed": "#001a42",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-dim": "#d8dadc",
+                        "primary-container": "#2170e4",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#fefcff",
+                        "outline-variant": "#c2c6d6",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#424754",
+                        "surface-tint": "#005ac2",
+                        "on-tertiary-fixed-variant": "#8c0053",
+                        "secondary": "#6b38d4",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-primary": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0058be",
+                        "outline": "#727785"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "md": "1rem",
+                        "xl": "4rem",
+                        "xs": "0.25rem",
+                        "gutter": "1.5rem",
+                        "lg": "2rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "accent-text": ["Yellowtail"],
+                        "kaushan": ["Kaushan Script"],
+                        "display-lg-mobile": ["Sora"],
+                        "label-caps": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Sora"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "accent-text": ["20px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Fixed Background System -->
+<div class="fixed inset-0 z-[-2] overflow-hidden pointer-events-none">
+<div class="absolute inset-0 bg-cover bg-center animate-nature-bg opacity-40 scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAW_jKSa0qF_xPKMLnVXMVoqDjLZ-_CQxUT7XQwyuN3D2C0p5F9VHZdv4EHJNyMMbFeGO1Yi9Liz9Fo4n6dqhNgVOYibd3F9YYLzpHK9cam1muzdqDOLWPtQVoiyOBRyjS6kwy6KF-0gyat6-gmUyNiqt1mfI1IQtMRYM2Evy3wUrfMlsINAmbSDpCMqM_L2Dfm6nBXKTulCV7MpzU49BUZAc_LQO-iUsv9A4kopO3qxDVB8jh4znlMFFkvCOdZwYJwYspwmF0Bpi6G');">
+</div>
+<!-- STITCH_SHADER_START:ANIMATION_4 class="absolute inset-0 w-full h-full opacity-30 mix-blend-overlay" -->
+<div class="absolute inset-0 w-full h-full opacity-30 mix-blend-overlay" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_4" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_4');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a shimmering aurora-like effect
+    float noise = sin(uv.x * 10.0 + u_time * 0.5) * cos(uv.y * 8.0 - u_time * 0.3);
+    float glow = smoothstep(0.4, 0.6, abs(sin(uv.y * 3.0 + u_time * 0.2 + noise * 0.5)));
+    
+    vec3 color1 = vec3(0.23, 0.51, 0.96); // Blue #3B82F6
+    vec3 color2 = vec3(0.55, 0.36, 0.96); // Purple #8B5CF6
+    
+    vec3 finalColor = mix(color1, color2, uv.x + noise * 0.2);
+    float alpha = glow * 0.15; // Very subtle overlay
+    
+    gl_FragColor = vec4(finalColor, alpha);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_4 -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white/60"></div>
+</div>
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 w-full bg-surface/70 backdrop-blur-[24px] border-b border-white/50 shadow-[0_10px_30px_rgba(107,56,212,0.2)]">
+<div class="flex justify-between items-center px-gutter py-md max-w-container-max mx-auto">
+<a class="flex items-center gap-sm group" href="/">
+<span class="font-kaushan text-3xl bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-200">Shifter</span>
+</a>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Convert</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Tools</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">History</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="px-lg py-sm rounded-xl font-body-md font-medium text-white bg-gradient-to-r from-primary to-secondary shadow-[0_10px_20px_rgba(107,56,212,0.3)] hover:scale-105 active:scale-95 transition-all duration-200">
+                    Continue with Google
+                </button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-gutter py-xl overflow-hidden">
+<div class="max-w-4xl mx-auto z-10 space-y-lg" data-aos="fade-up">
+<span class="font-accent-text text-accent-text text-secondary block animate-pulse">Creative files, shifted instantly</span>
+<h1 class="font-display-lg text-display-lg md:text-7xl tracking-tight leading-tight">
+<span class="text-gradient-cycle inline-block">Universal File Shifting Platform</span>
+</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Experience weightless file processing. Transform documents, media, and archives with our high-performance glass architecture.
+                </p>
+<div class="pt-md flex flex-wrap justify-center gap-md">
+<button class="px-xl py-lg rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-headline-sm shadow-[0_20px_40px_rgba(107,56,212,0.4)] animate-bounce-subtle hover:scale-110 active:scale-95 transition-all duration-300">
+                        Shift Your First File
+                    </button>
+<button class="px-xl py-lg rounded-2xl bg-white/70 backdrop-blur-md border border-white/50 text-primary font-headline-sm hover:bg-white/90 transition-all">
+                        Explore Tools
+                    </button>
+</div>
+</div>
+<!-- Floating Decoration Nodes -->
+<div class="absolute top-1/4 -left-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-secondary/10 blur-[120px] rounded-full"></div>
+</section>
+<!-- Metrics Grid -->
+<section class="max-w-container-max mx-auto px-gutter py-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="glass-shine bg-surface/30 backdrop-blur-[24px] border border-white/50 p-lg rounded-3xl shadow-xl hover:translate-y-[-8px] transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-md">cloud_done</span>
+<h3 class="font-headline-md text-primary">2.4M+</h3>
+<p class="font-body-md text-on-surface-variant">Files Processed</p>
+</div>
+<div class="glass-shine bg-surface/30 backdrop-blur-[24px] border border-white/50 p-lg rounded-3xl shadow-xl hover:translate-y-[-8px] transition-transform duration-300">
+<span class="material-symbols-outlined text-secondary text-4xl mb-md">groups</span>
+<h3 class="font-headline-md text-secondary">140K+</h3>
+<p class="font-body-md text-on-surface-variant">Active Shifters</p>
+</div>
+<div class="glass-shine bg-surface/30 backdrop-blur-[24px] border border-white/50 p-lg rounded-3xl shadow-xl hover:translate-y-[-8px] transition-transform duration-300">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-md">bolt</span>
+<h3 class="font-headline-md text-tertiary">0.4s</h3>
+<p class="font-body-md text-on-surface-variant">Avg. Conversion</p>
+</div>
+<div class="glass-shine bg-surface/30 backdrop-blur-[24px] border border-white/50 p-lg rounded-3xl shadow-xl hover:translate-y-[-8px] transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-md">security</span>
+<h3 class="font-headline-md text-primary">AES-256</h3>
+<p class="font-body-md text-on-surface-variant">Encrypted Pipeline</p>
+</div>
+</div>
+</section>
+<!-- Converters Grid -->
+<section class="py-xl bg-surface-container-lowest/20">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-xl">
+<h2 class="font-headline-md text-display-lg-mobile md:text-headline-md mb-md">What are we shifting today?</h2>
+<p class="font-body-md text-on-surface-variant">Universal support for 500+ formats.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-md">
+<div class="group cursor-pointer flex flex-col items-center gap-sm p-lg rounded-2xl bg-white/20 hover:bg-white/40 border border-white/30 transition-all duration-300 hover:scale-105">
+<div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">description</span>
+</div>
+<span class="font-label-caps text-on-surface">Documents</span>
+</div>
+<div class="group cursor-pointer flex flex-col items-center gap-sm p-lg rounded-2xl bg-white/20 hover:bg-white/40 border border-white/30 transition-all duration-300 hover:scale-105">
+<div class="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">image</span>
+</div>
+<span class="font-label-caps text-on-surface">Images</span>
+</div>
+<div class="group cursor-pointer flex flex-col items-center gap-sm p-lg rounded-2xl bg-white/20 hover:bg-white/40 border border-white/30 transition-all duration-300 hover:scale-105">
+<div class="w-16 h-16 rounded-xl bg-tertiary/10 flex items-center justify-center group-hover:bg-tertiary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">audio_file</span>
+</div>
+<span class="font-label-caps text-on-surface">Audio</span>
+</div>
+<div class="group cursor-pointer flex flex-col items-center gap-sm p-lg rounded-2xl bg-white/20 hover:bg-white/40 border border-white/30 transition-all duration-300 hover:scale-105">
+<div class="w-16 h-16 rounded-xl bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">videocam</span>
+</div>
+<span class="font-label-caps text-on-surface">Video</span>
+</div>
+<div class="group cursor-pointer flex flex-col items-center gap-sm p-lg rounded-2xl bg-white/20 hover:bg-white/40 border border-white/30 transition-all duration-300 hover:scale-105">
+<div class="w-16 h-16 rounded-xl bg-outline/10 flex items-center justify-center group-hover:bg-outline group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">folder_zip</span>
+</div>
+<span class="font-label-caps text-on-surface">Archives</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Workflow Section -->
+<section class="max-w-container-max mx-auto px-gutter py-xl">
+<div class="bg-surface/30 backdrop-blur-[24px] border border-white/50 rounded-[40px] p-xl shadow-2xl overflow-hidden relative">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-headline-md mb-lg">Simple. Fast. Magic.</h2>
+<ul class="space-y-xl">
+<li class="flex gap-md group">
+<div class="shrink-0 w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center font-headline-sm text-primary group-hover:bg-primary group-hover:text-white transition-all">1</div>
+<div>
+<h4 class="font-headline-sm text-on-surface">Drop Your Files</h4>
+<p class="font-body-md text-on-surface-variant">Drag and drop up to 2GB per file directly into the shifter zone.</p>
+</div>
+</li>
+<li class="flex gap-md group">
+<div class="shrink-0 w-12 h-12 rounded-full border-2 border-secondary flex items-center justify-center font-headline-sm text-secondary group-hover:bg-secondary group-hover:text-white transition-all">2</div>
+<div>
+<h4 class="font-headline-sm text-on-surface">Choose Format</h4>
+<p class="font-body-md text-on-surface-variant">Select from 500+ output options with smart optimization toggles.</p>
+</div>
+</li>
+<li class="flex gap-md group">
+<div class="shrink-0 w-12 h-12 rounded-full border-2 border-tertiary flex items-center justify-center font-headline-sm text-tertiary group-hover:bg-tertiary group-hover:text-white transition-all">3</div>
+<div>
+<h4 class="font-headline-sm text-on-surface">Shift &amp; Download</h4>
+<p class="font-body-md text-on-surface-variant">Real-time processing with instant ZIP packaging or cloud delivery.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="relative group">
+<div class="aspect-square bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[40px] border border-white/50 flex items-center justify-center p-xl">
+<div class="w-full h-full bg-white/40 backdrop-blur-xl rounded-3xl shadow-lg flex flex-col items-center justify-center p-md gap-md border border-white/60">
+<span class="material-symbols-outlined text-6xl text-primary animate-bounce">upload_file</span>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden liquid-progress">
+<div class="h-full bg-primary w-[75%] rounded-full"></div>
+</div>
+<span class="font-label-caps text-on-surface-variant">Shifting to .docx (75%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews Grid -->
+<section class="py-xl">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-md text-center mb-xl">Loved by 140k+ Creators</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface/30 backdrop-blur-md border border-white/40 p-lg rounded-3xl shadow-lg">
+<div class="flex gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-lg">"The cleanest file converter I've ever used. The glass UI makes it feel premium and the speed is unmatched."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant">
+<img alt="User" data-alt="A professional portrait of a tech entrepreneur with short dark hair and modern glasses, set against a soft blurred office background with warm lighting. The aesthetic is clean and high-end, matching a premium software company profile. Soft shadows and high-key illumination define the facial features with cinematic clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuu2S2l10YmSxapgjDAxYBwmPrVKkxqSsZeO2_Tqy8lv5N9fYI3Ovv1A2jNZza5GNWsci8HsWtVllLUwoBRHQI6Ob47Sn9kuICiFVK61lQiH72v8hsSqekxFgqFMwLz0kIvMCyNKUZLgCK0Og_7AejRciUaocWXTFTjz42mpwhrpAEkIc07oPoD2buXXHnfr5KT5Ow-hREebG_e9Ea-bPOOaNIoA79808OdUB3M__Qe28mlGCmVNYhceQoz0vF8s_M_tEpQnxTWeWf"/>
+</div>
+<div>
+<h5 class="font-label-caps">Felix Chen</h5>
+<p class="text-xs text-on-surface-variant uppercase">Creative Director</p>
+</div>
+</div>
+</div>
+<div class="bg-surface/30 backdrop-blur-md border border-white/40 p-lg rounded-3xl shadow-lg">
+<div class="flex gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-lg">"I convert 100s of images daily for my blog. Shifter handles bulk uploads like a dream without ever crashing."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant">
+<img alt="User" data-alt="A close-up portrait of a female content creator with a bright smile, her hair styled in a casual but polished way. The background is a minimalist studio with subtle purple and blue ambient lighting. The image captures a sense of professional joy and technological empowerment, perfectly suited for a high-performance SaaS review section." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjuJrWs0FoGg4j4nnT9M4wehCEK2zvXW23MFGX9y9EO16qwv9PjNvMBp6QHQTgICDTiPOGaseh5J7eEuGb_i0pP-svNXIK19QLlKu2jZVoa5v25U9MUmJAvr_tZSqpS2ZLoBlaF6xHLrWGYmMtd7VruFMf7cx1TKcMP153GNanKhGaO5YChwkuac_ZaIulOqdUgaDjsQ_f6VaiyHBm_kYhYPI5YT_4yRbwNxfX710PmpyPdJECt_0lgC9SnDhsLDe7eJC8cSDiSMKe"/>
+</div>
+<div>
+<h5 class="font-label-caps">Sarah Jenkins</h5>
+<p class="text-xs text-on-surface-variant uppercase">Tech Journalist</p>
+</div>
+</div>
+</div>
+<div class="bg-surface/30 backdrop-blur-md border border-white/40 p-lg rounded-3xl shadow-lg">
+<div class="flex gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-lg">"The API integration is flawless. We shifted our entire backend processing to Shifter in less than a day."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant">
+<img alt="User" data-alt="A portrait of a male software engineer in a high-tech workspace, featuring multiple screens with code in the background. The lighting is cool-toned with neon blue accents. He has a confident, thoughtful expression. The style is modern, sharp, and technologically advanced, emphasizing a developer-friendly brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZAD2iOEsqrBZfduzKY_ffMw08WyeVVfWhrLUqfvXub6iK02_kEgLP-P7__jJd9fA7Iry9VImjS-4OqiV8d5CBlpW7vsDPJ9SCsHIzEcRu-now11CTUNEpa1UAUDRqAJcXVB-WcKafEXq45VXttz7MN54LR1mu5M2DeLELyTqoM1CxaLK06qywMAEVb08tknsReZXwTTtVm2eNJs7IK89JZhvxlkiINqL60nlqkPbpEr7Or0thk_KT0kqIxuA3ifMFnk5L0UYXjx2w"/>
+</div>
+<div>
+<h5 class="font-label-caps">Marc Duvivier</h5>
+<p class="text-xs text-on-surface-variant uppercase">Full-Stack Lead</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technology Section -->
+<section class="max-w-container-max mx-auto px-gutter py-xl border-t border-white/20">
+<div class="flex flex-col md:flex-row justify-between items-center gap-lg opacity-60 grayscale hover:grayscale-0 transition-all">
+<span class="font-display-lg text-headline-sm text-on-surface-variant flex items-center gap-sm">
+<span class="material-symbols-outlined">architecture</span> Sharp
+                </span>
+<span class="font-display-lg text-headline-sm text-on-surface-variant flex items-center gap-sm">
+<span class="material-symbols-outlined">movie</span> FFmpeg
+                </span>
+<span class="font-display-lg text-headline-sm text-on-surface-variant flex items-center gap-sm">
+<span class="material-symbols-outlined">edit_document</span> LibreOffice
+                </span>
+<span class="font-display-lg text-headline-sm text-on-surface-variant flex items-center gap-sm">
+<span class="material-symbols-outlined">code</span> Cloudflare
+                </span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest/50 backdrop-blur-[24px] border-t border-white/50">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xl px-gutter py-xl max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1 space-y-md">
+<span class="font-kaushan text-2xl text-primary">Shifter</span>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                    © 2024 Shifter. High-performance file shifting. Built for creators who value speed and clarity.
+                </p>
+</div>
+<div>
+<h4 class="font-label-caps mb-lg text-on-surface">Tools</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">PDF to Word</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Image Converter</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Video Compressor</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps mb-lg text-on-surface">Company</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps mb-lg text-on-surface">Status</h4>
+<div class="flex items-center gap-sm p-sm rounded-xl bg-primary/10 border border-primary/20">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-medium text-primary">All Systems Operational</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for hovering elements
+        document.querySelectorAll('.glass-shine').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple Fade-in Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

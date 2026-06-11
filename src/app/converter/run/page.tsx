@@ -39,10 +39,10 @@ function ConverterRunContent() {
 
   if (loading || !user || !initialized) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-light-bg text-slate-800">
+      <div className="flex min-h-screen items-center justify-center bg-light-bg text-slate-200">
         <div className="flex flex-col items-center gap-3">
           <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-          <p className="text-sm font-bold text-zinc-500">Preparing Converter Engine...</p>
+          <p className="text-sm font-bold text-slate-400">Preparing Converter Engine...</p>
         </div>
       </div>
     );
@@ -73,7 +73,7 @@ function ConverterRunContent() {
   }
 
   return (
-    <div className="min-h-screen bg-light-bg text-slate-800 flex flex-col">
+    <div className="min-h-screen bg-light-bg text-slate-200 flex flex-col">
       <Navbar />
 
       <div className="flex flex-1">
@@ -81,19 +81,19 @@ function ConverterRunContent() {
 
         <main className="flex-1 p-6 md:p-8 flex flex-col gap-8 max-w-5xl">
           {/* Header Link */}
-          <div className="flex items-center justify-between border-b border-zinc-200/80 pb-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-6">
             <div>
-              <h1 className="text-2xl font-extrabold text-slate-800 flex items-center gap-2">
+              <h1 className="text-2xl font-extrabold text-slate-200 flex items-center gap-2">
                 {displayTitle} <Sparkles className="h-5 w-5 text-primary animate-pulse" />
               </h1>
-              <p className="text-sm text-zinc-500 mt-1 max-w-xl leading-relaxed font-semibold">
+              <p className="text-sm text-slate-400 mt-1 max-w-xl leading-relaxed font-semibold">
                 {displayDesc}
               </p>
             </div>
 
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-600 transition-colors font-bold"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition-colors font-bold cursor-pointer"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to Dashboard
             </Link>
@@ -115,7 +115,7 @@ function ConverterRunContent() {
 export default function ConverterRunPage() {
   return (
     <Suspense fallback={
-      <div className="flex min-h-screen items-center justify-center bg-light-bg">
+      <div className="flex min-h-screen items-center justify-center bg-light-bg text-slate-200">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent" />
       </div>
     }>

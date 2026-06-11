@@ -54,11 +54,11 @@ export const Sidebar: React.FC = () => {
   );
 
   return (
-    <aside className="w-64 shrink-0 border-r border-zinc-200 bg-white/60 backdrop-blur-xl p-4 flex flex-col justify-between hidden md:flex min-h-[calc(100vh-4rem)] shadow-sm">
+    <aside className="w-64 shrink-0 border-r border-white/10 bg-slate-950/20 backdrop-blur-xl p-4 flex flex-col justify-between hidden md:flex min-h-[calc(100vh-4rem)] shadow-lg shadow-black/10">
       <div className="flex flex-col gap-6">
         {Object.entries(categories).map(([category, items]) => (
           <div key={category} className="flex flex-col gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 px-3 mb-1">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 mb-1">
               {category}
             </span>
             {items.map((item) => {
@@ -70,12 +70,12 @@ export const Sidebar: React.FC = () => {
                   href={item.path}
                   className={`group flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold transition-all duration-200 ${
                     active
-                      ? "bg-gradient-to-r from-primary/10 to-secondary/5 text-primary border-l-2 border-primary"
-                      : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"
+                      ? "bg-gradient-to-r from-primary/25 to-secondary/15 text-primary border-l-2 border-primary"
+                      : "text-slate-300 hover:bg-white/5 hover:text-slate-100"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <Icon className={`h-4 w-4 transition-colors ${active ? "text-primary" : "text-zinc-400 group-hover:text-zinc-700"}`} />
+                    <Icon className={`h-4 w-4 transition-colors ${active ? "text-primary" : "text-slate-400 group-hover:text-slate-200"}`} />
                     <span>{item.name}</span>
                   </div>
                   <ChevronRight className={`h-3 w-3 opacity-0 transition-all ${active ? "opacity-100 text-primary" : "group-hover:opacity-50 group-hover:translate-x-0.5"}`} />
@@ -86,16 +86,16 @@ export const Sidebar: React.FC = () => {
         ))}
 
         {user.role === "admin" && (
-          <div className="flex flex-col gap-1 border-t border-zinc-200 pt-4">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-600 px-3 mb-1">
+          <div className="flex flex-col gap-1 border-t border-white/10 pt-4">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 px-3 mb-1">
               Administration
             </span>
             <Link
               href="/admin"
               className={`group flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold transition-all duration-200 ${
                 isActive("/admin")
-                  ? "bg-cyan-50 text-cyan-700 border-l-2 border-cyan-500"
-                  : "text-zinc-600 hover:bg-cyan-50 hover:text-cyan-800"
+                  ? "bg-cyan-950/20 text-cyan-400 border-l-2 border-cyan-500"
+                  : "text-slate-300 hover:bg-white/5 hover:text-cyan-400"
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -109,18 +109,18 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Storage progress indicator */}
-      <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50 p-4 flex flex-col gap-3 shadow-inner">
+      <div className="rounded-2xl border border-white/10 bg-slate-950/50 p-4 flex flex-col gap-3 shadow-inner">
         <div className="flex items-center justify-between text-xs">
-          <div className="flex items-center gap-1.5 text-zinc-500 font-semibold">
+          <div className="flex items-center gap-1.5 text-slate-400 font-semibold">
             <Database className="h-3.5 w-3.5" />
             <span>Temp Storage Used</span>
           </div>
-          <span className="font-bold text-zinc-700">
+          <span className="font-bold text-slate-200">
             {formatSize(user.storageUsedBytes)}
           </span>
         </div>
 
-        <div className="h-1.5 w-full rounded-full bg-zinc-200 overflow-hidden">
+        <div className="h-1.5 w-full rounded-full bg-slate-800/80 overflow-hidden border border-white/5">
           <div
             className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
             style={{ width: `${Math.max(percentStorage, 2)}%` }}

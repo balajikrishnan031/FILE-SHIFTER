@@ -114,10 +114,10 @@ export default function Dashboard() {
 
   if (loading || !user) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-light-bg text-slate-800">
+      <div className="flex min-h-screen items-center justify-center bg-light-bg text-slate-200">
         <div className="flex flex-col items-center gap-3">
           <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-          <p className="text-sm font-bold text-zinc-500">Loading Shifter Dashboard...</p>
+          <p className="text-sm font-bold text-slate-400">Loading Shifter Dashboard...</p>
         </div>
       </div>
     );
@@ -139,10 +139,8 @@ export default function Dashboard() {
     }
   };
 
-
-
   return (
-    <div className="relative min-h-screen bg-light-bg text-slate-800 flex flex-col overflow-x-hidden">
+    <div className="relative min-h-screen bg-light-bg text-slate-200 flex flex-col overflow-x-hidden">
       {/* Background Animated Blobs */}
       <div className="blur-blob blob-purple" />
       <div className="blur-blob blob-cyan" />
@@ -160,12 +158,12 @@ export default function Dashboard() {
 
         <main className="flex-1 p-6 md:p-8 flex flex-col gap-6 max-w-5xl">
           {/* Welcome Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-white/10 pb-4">
             <div>
-              <h1 className="text-2xl font-extrabold text-slate-800 flex items-center gap-2">
+              <h1 className="text-2xl font-extrabold text-slate-200 flex items-center gap-2">
                 Welcome, {user.name} <Sparkles className="h-5 w-5 text-primary animate-pulse" />
               </h1>
-              <p className="text-sm text-zinc-500 mt-1 font-semibold">
+              <p className="text-sm text-slate-400 mt-1 font-semibold">
                 Shift files instantly. Click any tool card below to convert immediately.
               </p>
             </div>
@@ -173,47 +171,45 @@ export default function Dashboard() {
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="glass-panel rounded-2xl p-4 border-zinc-200 bg-white/70 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Access Plan</span>
+            <div className="glass-panel rounded-2xl p-4 border-white/10 bg-slate-950/60 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Access Plan</span>
               <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-xl font-extrabold text-slate-800">Unlimited Free</span>
+                <span className="text-xl font-extrabold text-slate-200">Unlimited Free</span>
               </div>
             </div>
 
-            <div className="glass-panel rounded-2xl p-4 border-zinc-200 bg-white/70 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Shifts Completed</span>
+            <div className="glass-panel rounded-2xl p-4 border-white/10 bg-slate-950/60 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Shifts Completed</span>
               <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-xl font-extrabold text-slate-800">{user.dailyConversionsCount}</span>
-                <span className="text-zinc-400 text-xs font-semibold">files converted</span>
+                <span className="text-xl font-extrabold text-slate-200">{user.dailyConversionsCount}</span>
+                <span className="text-slate-400 text-xs font-semibold">files converted</span>
               </div>
             </div>
           </div>
 
           {/* Big Beautiful CTA Banner */}
-          <div className="rainbow-border-card rounded-3xl p-8 md:p-10 border border-zinc-200/50 bg-gradient-to-r from-indigo-50/50 via-white to-sky-50/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+          <div className="rainbow-border-card rounded-3xl p-8 md:p-10 border border-white/10 bg-gradient-to-r from-slate-950/60 to-slate-900/60 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
             <div className="flex flex-col gap-2 max-w-xl">
-              <h3 className="text-xl font-extrabold text-slate-800 flex items-center gap-2">
+              <h3 className="text-xl font-extrabold text-slate-200 flex items-center gap-2">
                 Converters Directory <Sparkles className="h-5 w-5 text-indigo-500 animate-pulse" />
               </h3>
-              <p className="text-sm text-zinc-500 font-semibold leading-relaxed">
+              <p className="text-sm text-slate-400 font-semibold leading-relaxed">
                 Browse our complete catalog of 40+ high-fidelity shifting tools. Select docx, pdf, mp4, mp3, zip, archives or custom resizer engines to execute conversions instantly.
               </p>
             </div>
             <Link
               href="/converters"
-              className="shrink-0 rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-primary/20 hover:scale-[1.02] hover:shadow-primary/45 transition-all duration-300 btn-pulse-glow"
+              className="shrink-0 rounded-2xl bg-gradient-to-r from-primary to-secondary px-8 py-3.5 text-sm font-extrabold text-slate-950 shadow-xl shadow-primary/20 hover:scale-[1.02] hover:shadow-primary/45 transition-all duration-300 btn-pulse-glow cursor-pointer"
             >
               Browse All Tools
             </Link>
           </div>
 
-
-
           {/* Recent Conversions History */}
           {recentConversions.length > 0 && (
-            <div className="flex flex-col gap-4 border-t border-zinc-200 pt-6">
+            <div className="flex flex-col gap-4 border-t border-white/10 pt-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                   <FileClock className="h-4 w-4 text-primary" /> Recent Shifts
                 </h2>
                 <Link href="/history" className="text-xs font-bold text-primary hover:text-primary-hover flex items-center gap-1 transition-colors">
@@ -225,17 +221,17 @@ export default function Dashboard() {
                 {recentConversions.map((record) => (
                   <div
                     key={record._id}
-                    className="glass-panel rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border border-zinc-200 bg-white/70 shadow-sm hover:shadow-md transition-shadow"
+                    className="glass-panel rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border border-white/10 bg-slate-950/60 shadow-sm hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="h-9 w-9 rounded-xl bg-zinc-100 flex items-center justify-center border border-zinc-200">
-                        <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                      <div className="h-9 w-9 rounded-xl bg-slate-900 flex items-center justify-center border border-white/10">
+                        <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-slate-800 truncate max-w-[240px] sm:max-w-md">
+                        <h4 className="text-sm font-bold text-slate-200 truncate max-w-[240px] sm:max-w-md">
                           {record.originalName}
                         </h4>
-                        <p className="text-[10px] text-zinc-400 font-bold mt-0.5">
+                        <p className="text-[10px] text-slate-400 font-bold mt-0.5">
                           {record.fromFormat.toUpperCase()} &rarr; {record.toFormat.toUpperCase()} &bull; {formatSize(record.originalSize)}
                         </p>
                       </div>
@@ -244,7 +240,7 @@ export default function Dashboard() {
                     <a
                       href={record.convertedFileUrl}
                       download
-                      className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 border border-transparent px-4 py-2 text-xs font-bold text-white transition-colors shadow-sm"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary-hover border border-transparent px-4 py-2 text-xs font-bold text-slate-950 transition-all shadow-md shadow-primary/20 cursor-pointer"
                     >
                       Download Output
                     </a>

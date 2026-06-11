@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shifter Dashboard | Premium File Transformation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Yellowtail&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .soft-glow-primary {
+            box-shadow: 0 10px 30px rgba(0, 88, 190, 0.2);
+        }
+        .soft-glow-secondary {
+            box-shadow: 0 10px 30px rgba(107, 56, 212, 0.2);
+        }
+        .liquid-progress {
+            position: relative;
+            overflow: hidden;
+        }
+        .liquid-progress::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: wave 2s infinite linear;
+        }
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-shine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            opacity: 0;
+        }
+        .card-shine:hover::before {
+            left: 100%;
+            opacity: 1;
+        }
+        body {
+            background-color: #f7f9fb;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#3e0022",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#ffd9e4",
+                        "tertiary-container": "#d23284",
+                        "on-background": "#191c1e",
+                        "tertiary": "#b10e6b",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#8455ef",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#ffb0cd",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-fixed": "#001a42",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-dim": "#d8dadc",
+                        "primary-container": "#2170e4",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#fefcff",
+                        "outline-variant": "#c2c6d6",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#424754",
+                        "surface-tint": "#005ac2",
+                        "on-tertiary-fixed-variant": "#8c0053",
+                        "secondary": "#6b38d4",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-primary": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0058be",
+                        "outline": "#727785"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "md": "1rem",
+                        "xl": "4rem",
+                        "xs": "0.25rem",
+                        "gutter": "1.5rem",
+                        "lg": "2rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "accent-text": ["Yellowtail"],
+                        "display-lg-mobile": ["Sora"],
+                        "label-caps": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Sora"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "accent-text": ["20px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- Fixed 3D Background Shader -->
+
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface/30 backdrop-blur-[24px] border-r border-white/50 shadow-xl flex flex-col gap-lg p-md z-50">
+<div class="flex items-center gap-sm px-sm">
+<span class="font-accent-text text-accent-text text-primary text-3xl">Shifter</span>
+</div>
+<div class="flex flex-col gap-xs mt-md">
+<div class="px-sm mb-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-60">WORKSPACE</span>
+</div>
+<a class="flex items-center gap-md bg-secondary-container/50 text-on-secondary-container rounded-xl p-3 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant/30 rounded-xl p-3 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-caps text-label-caps">My Files</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant/30 rounded-xl p-3 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-label-caps text-label-caps">Conversions</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant/30 rounded-xl p-3 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">key</span>
+<span class="font-label-caps text-label-caps">API Keys</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant/30 rounded-xl p-3 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-md p-sm">
+<div class="flex items-center gap-md p-sm bg-white/10 rounded-xl">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary/20 flex items-center justify-center border border-white/30">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional studio portrait of a young man with a friendly expression, soft cinematic lighting, high-end commercial photography style, clean background, neutral tones. The overall aesthetic is polished and premium, fitting for a tech workspace environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBImRO59p0thsCHW8tzEz_m4ETSUBD9V8y9jtPDF2iaHuUN08VgVTpaPBi1WH0-sqxehqaf73n-HN3wOuEwGMc-k3lmgPfM5ghqbIeS86YKnEpNn5UvId9WBb4GtgWxHs_gugTiFwPl1GsySPmL5unIMmWoNFSYCjvVVWG_ZPxA9XoIayH5_jFeSe8jR2CWAB83LMNf7kuvRYVm--tm8wGOuY-qgrOjnmKz-zEqfvS2rm1UAQOCB_ZRpSZJS5yQ2VlSZNRcupqsEBB9"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface font-bold">Premium User</span>
+<span class="text-[10px] text-on-surface-variant">Premium Plan</span>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-secondary text-on-primary font-label-caps text-label-caps py-3 rounded-xl soft-glow-secondary hover:scale-105 transition-transform">
+                    Upgrade Now
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 p-xl max-w-container-max mx-auto">
+<!-- Header -->
+<header class="mb-xl flex justify-between items-end">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-xs">Welcome back, User!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your creative workflow is optimized and ready for takeoff.</p>
+</div>
+<div class="flex gap-md">
+<button class="p-3 rounded-full glass-panel hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-3 rounded-full glass-panel hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Main Uploader Card -->
+<div class="col-span-12 lg:col-span-8 glass-panel rounded-[2rem] p-lg flex flex-col items-center justify-center border-dashed border-2 border-primary/30 min-h-[400px] card-shine group cursor-pointer">
+<div class="w-20 h-20 bg-primary-container/20 rounded-full flex items-center justify-center mb-md group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm mb-xs text-on-surface text-center">Ready to shift your files?</h2>
+<p class="text-on-surface-variant text-center max-w-md mb-lg">Drag and drop your files here, or click to browse. Support for PDF, PNG, JPG, MP4, and 50+ other formats.</p>
+<div class="flex gap-md">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-lg py-md rounded-full soft-glow-primary hover:scale-105 transition-all">
+                            Select Files
+                        </button>
+<button class="glass-panel text-primary font-label-caps text-label-caps px-lg py-md rounded-full hover:bg-white/40 transition-all">
+                            Browse Cloud
+                        </button>
+</div>
+</div>
+<!-- Stats Widgets Column -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<!-- Stats Card 1 -->
+<div class="glass-panel rounded-[1.5rem] p-md flex flex-col gap-sm card-shine">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">FILES CONVERTED</span>
+<span class="material-symbols-outlined text-primary">data_usage</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg text-[40px] text-on-surface">1,284</span>
+<span class="text-on-primary-fixed-variant text-sm font-bold text-green-600">+12%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary liquid-progress" style="width: 75%"></div>
+</div>
+</div>
+<!-- Stats Card 2 -->
+<div class="glass-panel rounded-[1.5rem] p-md flex flex-col gap-sm card-shine">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SPACE SAVED</span>
+<span class="material-symbols-outlined text-secondary">storage</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg text-[40px] text-on-surface">42.8 GB</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary liquid-progress" style="width: 60%"></div>
+</div>
+</div>
+<!-- Stats Card 3 -->
+<div class="glass-panel rounded-[1.5rem] p-md flex flex-col gap-sm card-shine">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUCCESS RATE</span>
+<span class="material-symbols-outlined text-tertiary">verified</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg text-[40px] text-on-surface">99.9%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary liquid-progress" style="width: 99%"></div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Bento Section -->
+<div class="col-span-12 glass-panel rounded-[2rem] p-lg">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Activity</h3>
+<a class="text-primary font-label-caps text-label-caps hover:underline" href="#">View All History</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-white/20">
+<th class="pb-md font-label-caps text-label-caps text-on-surface-variant px-sm">FILE NAME</th>
+<th class="pb-md font-label-caps text-label-caps text-on-surface-variant px-sm">FROM/TO</th>
+<th class="pb-md font-label-caps text-label-caps text-on-surface-variant px-sm">STATUS</th>
+<th class="pb-md font-label-caps text-label-caps text-on-surface-variant px-sm">DATE</th>
+<th class="pb-md font-label-caps text-label-caps text-on-surface-variant px-sm">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/10">
+<tr class="hover:bg-white/10 transition-colors group">
+<td class="py-md px-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Annual_Report_2023.pdf</span>
+</div>
+</td>
+<td class="py-md px-sm">
+<div class="flex items-center gap-xs">
+<span class="bg-surface-container-high px-2 py-1 rounded text-xs">PDF</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+<span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">DOCX</span>
+</div>
+</td>
+<td class="py-md px-sm">
+<span class="flex items-center gap-xs text-green-600 text-sm font-medium">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                            Completed
+                                        </span>
+</td>
+<td class="py-md px-sm text-on-surface-variant text-sm">Oct 24, 2:15 PM</td>
+<td class="py-md px-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">download</button>
+</td>
+</tr>
+<tr class="hover:bg-white/10 transition-colors group">
+<td class="py-md px-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">movie</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Project_Presentation.mp4</span>
+</div>
+</td>
+<td class="py-md px-sm">
+<div class="flex items-center gap-xs">
+<span class="bg-surface-container-high px-2 py-1 rounded text-xs">MP4</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+<span class="bg-secondary/10 text-secondary px-2 py-1 rounded text-xs">WEBM</span>
+</div>
+</td>
+<td class="py-md px-sm">
+<span class="flex items-center gap-xs text-secondary text-sm font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                            Processing (84%)
+                                        </span>
+</td>
+<td class="py-md px-sm text-on-surface-variant text-sm">Oct 24, 2:42 PM</td>
+<td class="py-md px-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-error">cancel</button>
+</td>
+</tr>
+<tr class="hover:bg-white/10 transition-colors group">
+<td class="py-md px-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 glass-panel rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">image</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Hero_Shot_v2.heic</span>
+</div>
+</td>
+<td class="py-md px-sm">
+<div class="flex items-center gap-xs">
+<span class="bg-surface-container-high px-2 py-1 rounded text-xs">HEIC</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+<span class="bg-tertiary/10 text-tertiary px-2 py-1 rounded text-xs">JPG</span>
+</div>
+</td>
+<td class="py-md px-sm">
+<span class="flex items-center gap-xs text-green-600 text-sm font-medium">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                            Completed
+                                        </span>
+</td>
+<td class="py-md px-sm text-on-surface-variant text-sm">Oct 24, 11:20 AM</td>
+<td class="py-md px-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">download</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer-like separation -->
+<footer class="mt-xl py-lg border-t border-white/20 flex flex-col md:flex-row justify-between items-center text-on-surface-variant">
+<p class="font-label-caps text-label-caps">© 2024 Shifter. High-performance file shifting.</p>
+<div class="flex gap-lg mt-md md:mt-0">
+<a class="font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps hover:text-primary transition-colors" href="#">API Docs</a>
+<a class="font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</main>
+</div>
+<script>
+        // Micro-interaction for Drag and Drop area
+        const dropZone = document.querySelector('.lg\\:col-span-8');
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('scale-98', 'bg-white/20');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('scale-98', 'bg-white/20');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('scale-98', 'bg-white/20');
+            alert('File shifting initiated! Prepare for liftoff.');
+        });
+    </script>
+</body></html>

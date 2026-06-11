@@ -46,7 +46,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${sora.variable} ${kaushanScript.variable} ${yellowtail.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-light-bg text-slate-800 selection:bg-primary/20 selection:text-primary">
+      <body className="min-h-full flex flex-col bg-light-bg text-slate-200 selection:bg-primary/30 selection:text-primary-hover">
         <div className="fixed-nature-bg" />
         <AuroraBackground />
         <AuthProvider>

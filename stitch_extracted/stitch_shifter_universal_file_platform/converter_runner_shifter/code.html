@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shifter | File Converter</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=Yellowtail&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#3e0022",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#ffd9e4",
+                        "tertiary-container": "#d23284",
+                        "on-background": "#191c1e",
+                        "tertiary": "#b10e6b",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#8455ef",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#ffb0cd",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-fixed": "#001a42",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-dim": "#d8dadc",
+                        "primary-container": "#2170e4",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#fefcff",
+                        "outline-variant": "#c2c6d6",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#424754",
+                        "surface-tint": "#005ac2",
+                        "on-tertiary-fixed-variant": "#8c0053",
+                        "secondary": "#6b38d4",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-primary": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0058be",
+                        "outline": "#727785"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "md": "1rem",
+                        "xl": "4rem",
+                        "xs": "0.25rem",
+                        "gutter": "1.5rem",
+                        "lg": "2rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "accent-text": ["Yellowtail"],
+                        "display-lg-mobile": ["Sora"],
+                        "label-caps": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Sora"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "accent-text": ["20px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .soft-glow-primary {
+            box-shadow: 0 10px 30px rgba(0, 88, 190, 0.2);
+        }
+        .liquid-progress {
+            position: relative;
+            overflow: hidden;
+        }
+        .liquid-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: wave 2s infinite linear;
+        }
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+        .shine-effect:hover::before {
+            left: 100%;
+            top: 100%;
+        }
+        .step-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface overflow-x-hidden min-h-screen">
+<!-- Background Animation Layer -->
+
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 bg-surface/70 backdrop-blur-[24px] border-b border-white/50 shadow-[0_10px_30px_rgba(107,56,212,0.2)]">
+<div class="flex justify-between items-center px-gutter py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="font-accent-text text-accent-text bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-[32px]">Shifter</span>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Convert</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Tools</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">History</a>
+</div>
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary px-lg py-sm rounded-full font-bold hover:scale-105 transition-transform soft-glow-primary active:scale-95 duration-100">
+                Continue with Google
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative z-10 max-w-container-max mx-auto px-gutter py-xl flex flex-col items-center justify-center min-h-[calc(100vh-80px)]">
+<!-- Page Header -->
+<header class="text-center mb-xl">
+<h1 class="font-display-lg text-display-lg md:text-display-lg mb-sm">MP4 to MP3 Converter</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl mx-auto">Shift your media seamlessly with high-fidelity extraction and professional-grade processing.</p>
+</header>
+<!-- Multi-Step Converter Container -->
+<div class="w-full max-w-3xl glass-panel bg-white/20 rounded-[2rem] p-lg md:p-xl shadow-2xl relative overflow-hidden shine-effect">
+<!-- Step Indicators -->
+<div class="flex justify-between items-center mb-xl max-w-md mx-auto relative">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-white/30 -translate-y-1/2 -z-10"></div>
+<div class="absolute top-1/2 left-0 h-[2px] bg-primary -translate-y-1/2 -z-10 transition-all duration-500 w-0" id="step-line"></div>
+<div class="step-dot flex flex-col items-center gap-xs" data-step="1">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-on-primary font-bold shadow-lg">1</div>
+<span class="text-label-caps font-label-caps text-on-surface">Upload</span>
+</div>
+<div class="step-dot flex flex-col items-center gap-xs opacity-50" data-step="2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant font-bold">2</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Config</span>
+</div>
+<div class="step-dot flex flex-col items-center gap-xs opacity-50" data-step="3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant font-bold">3</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Process</span>
+</div>
+<div class="step-dot flex flex-col items-center gap-xs opacity-50" data-step="4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant font-bold">4</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Finish</span>
+</div>
+</div>
+<!-- Stage 1: Upload -->
+<section class="step-transition" id="stage-1">
+<div class="border-2 border-dashed border-white/50 rounded-xl p-xl flex flex-col items-center justify-center bg-white/10 hover:bg-white/20 transition-all cursor-pointer group" onclick="goToStep(2)">
+<span class="material-symbols-outlined text-primary text-[64px] mb-md group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;">upload_file</span>
+<h3 class="font-headline-sm text-headline-sm mb-xs">Drop your MP4 here</h3>
+<p class="text-on-surface-variant mb-lg">or click to browse from your device</p>
+<div class="flex gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant bg-surface-container/30 px-md py-xs rounded-full">
+<span class="material-symbols-outlined text-[18px]">cloud</span>
+<span class="text-label-caps font-label-caps">Google Drive</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant bg-surface-container/30 px-md py-xs rounded-full">
+<span class="material-symbols-outlined text-[18px]">link</span>
+<span class="text-label-caps font-label-caps">URL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stage 2: Config -->
+<section class="step-transition hidden opacity-0 translate-y-10" id="stage-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-lg">
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-md">AUDIO BITRATE</label>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" max="320" min="64" type="range" value="192"/>
+<div class="flex justify-between mt-xs text-on-surface-variant text-[12px]">
+<span>64kbps</span>
+<span class="font-bold text-primary">192kbps (Recommended)</span>
+<span>320kbps</span>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-md">SAMPLING RATE</label>
+<select class="w-full bg-white/30 border-none rounded-xl p-md focus:ring-2 focus:ring-primary/20">
+<option>44.1 kHz (CD Quality)</option>
+<option>48.0 kHz (Studio Quality)</option>
+<option>96.0 kHz (Hi-Res)</option>
+</select>
+</div>
+</div>
+<div class="space-y-lg">
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-md">METADATA WATERMARK</label>
+<input class="w-full bg-white/30 border-none rounded-xl p-md focus:ring-2 focus:ring-primary/20" placeholder="Converted via Shifter.io" type="text"/>
+</div>
+<div class="bg-secondary-container/10 p-md rounded-xl border border-secondary/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-body-md text-on-surface-variant">High-fidelity mode enabled. Processing might take 3-5 seconds longer.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-xl flex justify-end">
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-bold flex items-center gap-md hover:scale-105 transition-all soft-glow-primary" onclick="startProcessing()">
+                        Shift to MP3
+                        <span class="material-symbols-outlined">auto_fix_high</span>
+</button>
+</div>
+</section>
+<!-- Stage 3: Process -->
+<section class="step-transition hidden opacity-0 text-center py-xl" id="stage-3">
+<div class="relative w-48 h-48 mx-auto mb-lg">
+<div class="absolute inset-0 rounded-full border-4 border-white/20"></div>
+<div class="absolute inset-0 rounded-full border-4 border-t-primary border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+<div class="absolute inset-4 rounded-full glass-panel flex items-center justify-center">
+<span class="font-display-lg text-headline-md" id="progress-val">0%</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-md text-primary animate-pulse" id="loading-msg">Squeezing buffer...</h3>
+<div class="w-full max-w-md mx-auto h-3 bg-surface-container rounded-full overflow-hidden liquid-progress">
+<div class="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 w-0" id="progress-bar"></div>
+</div>
+</section>
+<!-- Stage 4: Download -->
+<section class="step-transition hidden opacity-0" id="stage-4">
+<div class="flex flex-col items-center">
+<div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-md text-headline-md mb-lg">Shift Complete!</h2>
+<div class="grid grid-cols-2 gap-md w-full max-w-md mb-xl">
+<div class="glass-panel p-md rounded-xl text-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant block mb-xs">SOURCE</span>
+<span class="font-bold text-headline-sm">42.5 MB</span>
+<span class="text-body-md block opacity-50">MP4 Video</span>
+</div>
+<div class="glass-panel p-md rounded-xl text-center bg-primary/5">
+<span class="text-label-caps font-label-caps text-primary block mb-xs">SHIFTER SIZE</span>
+<span class="font-bold text-headline-sm text-primary">4.2 MB</span>
+<span class="text-body-md block text-primary/70">MP3 Audio</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary text-on-primary px-xl py-lg rounded-full font-bold flex items-center gap-md hover:scale-105 transition-all shadow-[0_20px_50px_rgba(0,88,190,0.4)]">
+<span class="material-symbols-outlined">download</span>
+                            Download File
+                        </button>
+<button class="bg-white/30 text-on-surface px-xl py-lg rounded-full font-bold flex items-center gap-md hover:bg-white/50 transition-all border border-white/50" onclick="resetFlow()">
+<span class="material-symbols-outlined">refresh</span>
+                            Shift Another
+                        </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Floating Info Cards (Asymmetric Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mt-xl w-full max-w-container-max">
+<div class="glass-panel p-lg rounded-3xl bg-white/10 hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-secondary mb-md">verified_user</span>
+<h4 class="font-headline-sm text-[20px] mb-xs">Private &amp; Secure</h4>
+<p class="text-on-surface-variant text-body-md">Files are encrypted during shifting and auto-deleted from our nodes after 2 hours.</p>
+</div>
+<div class="glass-panel p-lg rounded-3xl bg-white/10 hover:-translate-y-2 transition-transform md:translate-y-8">
+<span class="material-symbols-outlined text-primary mb-md">bolt</span>
+<h4 class="font-headline-sm text-[20px] mb-xs">Turbo Engine</h4>
+<p class="text-on-surface-variant text-body-md">Powered by multi-threaded cloud clusters for instantaneous results, even with 4K files.</p>
+</div>
+<div class="glass-panel p-lg rounded-3xl bg-white/10 hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-tertiary mb-md">high_quality</span>
+<h4 class="font-headline-sm text-[20px] mb-xs">Lossless Extraction</h4>
+<p class="text-on-surface-variant text-body-md">Our specialized algorithms preserve every frequency, ensuring studio-quality sound.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest/50 backdrop-blur-[24px] border-t border-white/50 mt-xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xl px-gutter py-xl max-w-container-max mx-auto">
+<div class="space-y-md">
+<span class="font-accent-text text-accent-text text-primary text-[28px]">Shifter</span>
+<p class="text-on-surface-variant text-body-md">© 2024 Shifter. High-performance file shifting. Built for the weightless era.</p>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps mb-lg text-on-surface">POPULAR</h5>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">PDF to Word</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Image Converter</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Video Compressor</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps mb-lg text-on-surface">COMPANY</h5>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps mb-lg text-on-surface">STATUS</h5>
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-on-surface-variant">All Systems Nominal</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        let currentStep = 1;
+
+        function goToStep(step) {
+            // Hide all stages
+            document.querySelectorAll('section').forEach(s => {
+                s.classList.add('hidden', 'opacity-0', 'translate-y-10');
+            });
+
+            // Show target stage
+            const target = document.getElementById(`stage-${step}`);
+            target.classList.remove('hidden');
+            setTimeout(() => {
+                target.classList.remove('opacity-0', 'translate-y-10');
+            }, 50);
+
+            // Update indicators
+            document.querySelectorAll('.step-dot').forEach((dot, idx) => {
+                const dotNum = idx + 1;
+                const circle = dot.querySelector('div');
+                const label = dot.querySelector('span');
+
+                if (dotNum < step) {
+                    dot.classList.remove('opacity-50');
+                    circle.classList.replace('bg-surface-container', 'bg-primary');
+                    circle.classList.replace('text-on-surface-variant', 'text-on-primary');
+                    circle.innerHTML = `<span class="material-symbols-outlined text-[18px]">check</span>`;
+                } else if (dotNum === step) {
+                    dot.classList.remove('opacity-50');
+                    circle.classList.replace('bg-surface-container', 'bg-primary');
+                    circle.classList.replace('text-on-surface-variant', 'text-on-primary');
+                    circle.innerHTML = step;
+                } else {
+                    dot.classList.add('opacity-50');
+                    circle.className = 'w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant font-bold';
+                    circle.innerHTML = dotNum;
+                }
+            });
+
+            // Progress line
+            const progressLine = document.getElementById('step-line');
+            progressLine.style.width = `${(step - 1) * 33.33}%`;
+            
+            currentStep = step;
+        }
+
+        function startProcessing() {
+            goToStep(3);
+            let progress = 0;
+            const bar = document.getElementById('progress-bar');
+            const val = document.getElementById('progress-val');
+            const msg = document.getElementById('loading-msg');
+            
+            const messages = [
+                'Squeezing buffer...',
+                'Extracting frequencies...',
+                'Normalizing harmonics...',
+                'Polishing bitstream...',
+                'Applying metadata...'
+            ];
+
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 8) + 2;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => goToStep(4), 500);
+                }
+                bar.style.width = `${progress}%`;
+                val.innerText = `${progress}%`;
+                
+                if (progress > 20 && progress < 40) msg.innerText = messages[1];
+                if (progress > 40 && progress < 60) msg.innerText = messages[2];
+                if (progress > 60 && progress < 80) msg.innerText = messages[3];
+                if (progress > 80) msg.innerText = messages[4];
+            }, 150);
+        }
+
+        function resetFlow() {
+            location.reload();
+        }
+    </script>
+</body></html>

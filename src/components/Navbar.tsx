@@ -42,13 +42,13 @@ export const Navbar: React.FC = () => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/70 backdrop-blur-md shadow-sm">
+    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/60 backdrop-blur-md shadow-lg shadow-black/20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-zinc-200/60 transition-transform group-hover:scale-105 shadow-md shadow-primary/5">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 border border-white/10 transition-transform group-hover:scale-105 shadow-md shadow-primary/5">
                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/dashboard"
                   className={`text-sm font-semibold transition-colors ${
-                    isActive("/dashboard") ? "text-primary" : "text-zinc-600 hover:text-zinc-900"
+                    isActive("/dashboard") ? "text-primary" : "text-slate-300 hover:text-primary"
                   }`}
                 >
                   Dashboard
@@ -108,7 +108,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/converters"
                   className={`text-sm font-semibold transition-colors ${
-                    isActive("/converters") ? "text-primary" : "text-zinc-600 hover:text-zinc-900"
+                    isActive("/converters") ? "text-primary" : "text-slate-300 hover:text-primary"
                   }`}
                 >
                   Converters List
@@ -116,7 +116,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/history"
                   className={`text-sm font-semibold transition-colors ${
-                    isActive("/history") ? "text-primary" : "text-zinc-600 hover:text-zinc-900"
+                    isActive("/history") ? "text-primary" : "text-slate-300 hover:text-primary"
                   }`}
                 >
                   History
@@ -124,7 +124,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/profile"
                   className={`text-sm font-semibold transition-colors ${
-                    isActive("/profile") ? "text-primary" : "text-zinc-600 hover:text-zinc-900"
+                    isActive("/profile") ? "text-primary" : "text-slate-300 hover:text-primary"
                   }`}
                 >
                   Profile & Usage
@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     href="/admin"
                     className={`text-sm font-semibold transition-colors flex items-center gap-1 ${
-                      isActive("/admin") ? "text-secondary" : "text-zinc-600 hover:text-zinc-900"
+                      isActive("/admin") ? "text-secondary" : "text-slate-300 hover:text-primary"
                     }`}
                   >
                     <ShieldAlert className="h-4 w-4" /> Admin Panel
@@ -142,16 +142,16 @@ export const Navbar: React.FC = () => {
               </>
             ) : (
               <>
-                <Link href="/converters" className="text-sm font-semibold text-zinc-600 hover:text-zinc-900 transition-colors">
+                <Link href="/converters" className="text-sm font-semibold text-slate-300 hover:text-primary transition-colors">
                   Converters
                 </Link>
-                <a href="#features" className="text-sm font-semibold text-zinc-600 hover:text-zinc-900 transition-colors">
+                <a href="#features" className="text-sm font-semibold text-slate-300 hover:text-primary transition-colors">
                   Features
                 </a>
-                <a href="#how-it-works" className="text-sm font-semibold text-zinc-600 hover:text-zinc-900 transition-colors">
+                <a href="#how-it-works" className="text-sm font-semibold text-slate-300 hover:text-primary transition-colors">
                   How It Works
                 </a>
-                <a href="#developers" className="text-sm font-semibold text-zinc-600 hover:text-zinc-900 transition-colors">
+                <a href="#developers" className="text-sm font-semibold text-slate-300 hover:text-primary transition-colors">
                   Developers
                 </a>
               </>
@@ -166,36 +166,36 @@ export const Navbar: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 p-1 pr-3 hover:bg-zinc-100 transition-colors"
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/60 p-1 pr-3 hover:bg-slate-800/80 transition-colors"
                 >
-                  <img src={user.avatar} alt={user.name} className="h-7 w-7 rounded-full bg-zinc-200" />
-                  <span className="text-sm font-bold text-zinc-700 max-w-[120px] truncate">{user.name}</span>
+                  <img src={user.avatar} alt={user.name} className="h-7 w-7 rounded-full bg-slate-800" />
+                  <span className="text-sm font-bold text-slate-200 max-w-[120px] truncate">{user.name}</span>
                 </button>
 
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-xl border border-zinc-200 bg-white p-1 shadow-2xl">
-                    <div className="px-3 py-2 border-b border-zinc-100">
-                      <p className="text-xs text-zinc-400">Signed in as</p>
-                      <p className="text-sm font-bold text-zinc-700 truncate">{user.email}</p>
+                  <div className="absolute right-0 mt-2 w-56 rounded-xl border border-white/15 bg-slate-950 p-1 shadow-2xl glass-panel text-slate-200">
+                    <div className="px-3 py-2 border-b border-white/10">
+                      <p className="text-xs text-slate-400">Signed in as</p>
+                      <p className="text-sm font-bold text-slate-200 truncate">{user.email}</p>
                     </div>
                     <Link
                       href="/dashboard"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 transition-all"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-slate-100 transition-all"
                     >
                       <LayoutDashboard className="h-4 w-4" /> Dashboard
                     </Link>
                     <Link
                       href="/history"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 transition-all"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-slate-100 transition-all"
                     >
                       <History className="h-4 w-4" /> History
                     </Link>
                     <Link
                       href="/profile"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 transition-all"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-slate-100 transition-all"
                     >
                       <UserIcon className="h-4 w-4" /> My Profile
                     </Link>
@@ -203,14 +203,14 @@ export const Navbar: React.FC = () => {
                       <Link
                         href="/admin"
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-cyan-600 hover:bg-cyan-50 hover:text-cyan-800 transition-all border-t border-zinc-100"
+                        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-primary hover:bg-primary/10 hover:text-primary-hover transition-all border-t border-white/10"
                       >
                         <ShieldAlert className="h-4 w-4" /> Admin Panel
                       </Link>
                     )}
                     <button
                       onClick={handleLogout}
-                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-rose-600 hover:bg-rose-50 hover:text-rose-800 transition-all border-t border-zinc-100 text-left"
+                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-rose-400 hover:bg-rose-500/10 hover:text-rose-300 transition-all border-t border-white/10 text-left"
                     >
                       <LogOut className="h-4 w-4" /> Sign Out
                     </button>
